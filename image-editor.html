@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FlexQR Studio – Image Editor</title>
+<meta name="description" content="Edit multiple images in one clean browser-based workspace. Drag, resize, rotate, and layer images with a premium FlexQR-style editor." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --blue:#2563eb; --blue-light:#3b82f6; --blue-pale:#eff6ff; --blue-mid:#dbeafe;
+    --ink:#0f172a; --ink-soft:#334155; --ink-muted:#64748b; --ink-faint:#94a3b8;
+    --line:#e2e8f0; --line-soft:#f1f5f9; --white:#ffffff; --surface:#f8fafc; --card:#ffffff;
+    --radius-sm:8px; --radius:14px; --radius-lg:20px; --radius-xl:28px;
+    --shadow-sm:0 1px 3px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04);
+    --shadow:0 4px 16px rgba(0,0,0,.08),0 1px 4px rgba(0,0,0,.04);
+    --shadow-lg:0 12px 40px rgba(0,0,0,.10),0 4px 12px rgba(0,0,0,.06);
+    --transition:180ms cubic-bezier(.4,0,.2,1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',sans-serif;background:var(--surface);color:var(--ink);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+  a{text-decoration:none}
+  button,input,textarea,select{font:inherit}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+  @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
+
+  .navbar{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);padding:0 24px}
+  .nav-inner{max-width:1200px;margin:0 auto;height:62px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .logo{display:flex;align-items:center;gap:10px;color:var(--ink);font-weight:800;letter-spacing:-.4px}
+  .logo-mark{width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,var(--blue),#7c3aed);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 18px rgba(37,99,235,.28)}
+  .logo-mark svg{width:17px;height:17px;stroke:#fff;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+  .nav-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+  .nav-link,.nav-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:8px 14px;border-radius:10px;font-size:13.5px;font-weight:600;transition:all var(--transition);white-space:nowrap}
+  .nav-link{color:var(--ink-muted);border:1px solid transparent}
+  .nav-link:hover{color:var(--ink);background:var(--line-soft);border-color:var(--line)}
+  .nav-btn{background:var(--blue);color:#fff;border:0;cursor:pointer;box-shadow:0 2px 10px rgba(37,99,235,.25)}
+  .nav-btn:hover{background:#1d4ed8;transform:translateY(-1px)}
+
+  .hero{max-width:1200px;margin:0 auto;padding:54px 24px 28px;text-align:center;animation:fadeUp .55s ease both}
+  .badge{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:999px;background:var(--blue-pale);border:1px solid var(--blue-mid);color:var(--blue);font-size:12px;font-weight:700;letter-spacing:.25px;margin-bottom:18px}
+  .badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--blue)}
+  h1{font-size:clamp(30px,5.6vw,52px);font-weight:900;letter-spacing:-1.5px;line-height:1.06;margin-bottom:12px}
+  h1 span{color:var(--blue)}
+  .hero p{max-width:620px;margin:0 auto;color:var(--ink-muted);font-size:16.5px;line-height:1.7}
+  .trust{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:18px;color:var(--ink-faint);font-size:13px}
+  .trust span{display:inline-flex;align-items:center;gap:6px}
+  .trust i{width:8px;height:8px;border-radius:50%;background:var(--blue);display:inline-block}
+
+  .wrap{max-width:1200px;margin:0 auto;padding:0 24px 88px}
+  .workspace{display:grid;grid-template-columns:340px 1fr;gap:22px;align-items:start}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow);overflow:hidden}
+  .card-head{padding:18px 20px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .card-head h2,.card-head h3{font-size:15px;font-weight:800;letter-spacing:-.2px}
+  .card-body{padding:18px 20px}
+
+  .field{margin-bottom:16px}
+  .label{display:block;font-size:12px;font-weight:800;letter-spacing:.2px;color:var(--ink-soft);margin-bottom:7px}
+  .hint{font-size:11.5px;color:var(--ink-faint);margin-top:5px;line-height:1.45}
+  .input,.select,.textarea{width:100%;padding:10px 13px;border:1.5px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);outline:0;transition:border-color var(--transition),box-shadow var(--transition)}
+  .input:focus,.select:focus,.textarea:focus{border-color:var(--blue-light);box-shadow:0 0 0 3px rgba(59,130,246,.12)}
+  .textarea{min-height:92px;resize:vertical}
+  .select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:34px;cursor:pointer}
+  .row-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+  .upload{border:2px dashed var(--line);border-radius:14px;background:var(--surface);padding:18px;text-align:center;cursor:pointer;transition:all var(--transition)}
+  .upload:hover{background:var(--blue-pale);border-color:var(--blue-light)}
+  .upload input{display:none}
+  .upload .icon{width:38px;height:38px;margin:0 auto 8px;border-radius:12px;background:var(--blue-pale);display:flex;align-items:center;justify-content:center;color:var(--blue)}
+  .upload .icon svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2}
+  .upload strong{display:block;font-size:13px;margin-bottom:2px}
+  .upload small{color:var(--ink-faint)}
+
+  .btn-row{display:flex;flex-direction:column;gap:10px;margin-top:8px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;cursor:pointer;border-radius:12px;padding:11px 16px;font-weight:700;transition:all var(--transition);font-size:13.5px}
+  .btn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2.3}
+  .btn-primary{background:var(--blue);color:#fff;box-shadow:0 2px 10px rgba(37,99,235,.24)}
+  .btn-primary:hover{background:#1d4ed8;transform:translateY(-1px)}
+  .btn-secondary{background:var(--surface);color:var(--ink);border:1.5px solid var(--line)}
+  .btn-secondary:hover{background:var(--line-soft)}
+  .btn-outline{background:#fff;color:var(--blue);border:1.5px solid var(--blue-mid)}
+  .btn-outline:hover{background:var(--blue-pale)}
+  .btn-ghost{background:transparent;color:var(--ink-muted);border:1.5px solid var(--line)}
+  .btn-ghost:hover{background:var(--line-soft)}
+  .btn-danger{background:#fef2f2;color:#dc2626;border:1.5px solid #fecaca}
+  .btn-danger:hover{background:#fee2e2}
+
+  .tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:0 20px 14px}
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{flex:0 0 auto;padding:8px 12px;border-radius:10px;border:1px solid transparent;background:transparent;color:var(--ink-muted);font-size:12.5px;font-weight:700;cursor:pointer;transition:all var(--transition);white-space:nowrap}
+  .tab:hover{background:var(--line-soft);color:var(--ink)}
+  .tab.active{background:var(--blue-pale);border-color:var(--blue-mid);color:var(--blue)}
+  .panel{display:none;padding:0 20px 20px;animation:fadeIn .24s ease}
+  .panel.active{display:block}
+
+  .toggle-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:12px;padding:12px 14px;border-radius:12px;background:var(--surface);border:1px solid var(--line)}
+  .toggle-label{font-size:13px;font-weight:600;color:var(--ink)}
+  .toggle{position:relative;width:42px;height:24px;flex-shrink:0}
+  .toggle input{opacity:0;width:0;height:0}
+  .toggle-slider{position:absolute;inset:0;background:#dbe2ef;border-radius:999px;cursor:pointer;transition:all .22s}
+  .toggle-slider::before{content:'';position:absolute;top:4px;left:4px;width:16px;height:16px;border-radius:50%;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.12);transition:all .22s}
+  .toggle input:checked + .toggle-slider{background:var(--blue)}
+  .toggle input:checked + .toggle-slider::before{transform:translateX(18px)}
+
+  .slider-row{display:flex;align-items:center;gap:12px}
+  .slider{flex:1;-webkit-appearance:none;height:5px;border-radius:999px;background:var(--line);outline:none}
+  .slider::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;background:var(--blue);border:2px solid #fff;box-shadow:0 1px 4px rgba(37,99,235,.28)}
+  .val{min-width:42px;text-align:right;font-size:12px;font-weight:800;color:var(--blue)}
+  .color-row{display:flex;gap:10px;align-items:center}
+  .swatch{width:40px;height:40px;border-radius:10px;border:2px solid var(--line);overflow:hidden;position:relative;flex-shrink:0}
+  .swatch input{position:absolute;inset:-6px;width:calc(100% + 12px);height:calc(100% + 12px);opacity:0;cursor:pointer;border:0}
+  .preview-chip{width:100%;height:100%;border-radius:8px}
+
+  .layers-list{display:flex;flex-direction:column;gap:8px;max-height:260px;overflow:auto;padding-right:2px}
+  .layer-item{display:flex;align-items:center;gap:10px;padding:10px;border:1px solid var(--line);border-radius:12px;background:#fff;cursor:pointer;transition:all var(--transition)}
+  .layer-item:hover{border-color:var(--blue-light);box-shadow:0 6px 16px rgba(37,99,235,.08)}
+  .layer-item.active{border-color:var(--blue);background:var(--blue-pale)}
+  .layer-thumb{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#eef2ff,#fff);border:1px solid var(--line);flex-shrink:0;background-size:cover;background-position:center}
+  .layer-meta{flex:1;min-width:0}
+  .layer-meta strong{display:block;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .layer-meta small{display:block;color:var(--ink-faint);font-size:11.5px}
+
+  .canvas-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow);overflow:hidden;position:sticky;top:76px}
+  .canvas-top{padding:14px 18px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .canvas-top h3{font-size:15px;font-weight:800;letter-spacing:-.2px}
+  .canvas-top .tools{display:flex;gap:8px;flex-wrap:wrap}
+  .tiny-btn{padding:8px 12px;border-radius:10px;border:1px solid var(--line);background:#fff;color:var(--ink);font-weight:700;font-size:12px;cursor:pointer;transition:all var(--transition)}
+  .tiny-btn:hover{background:var(--line-soft)}
+  .tiny-btn.primary{background:var(--blue);border-color:var(--blue);color:#fff}
+  .tiny-btn.primary:hover{background:#1d4ed8}
+  .canvas-wrap{padding:20px}
+  .canvas-shell{background:linear-gradient(180deg,#f8fafc,#eef2ff);border:2px dashed var(--line);border-radius:18px;padding:16px;min-height:620px;display:flex;align-items:center;justify-content:center;position:relative}
+  .canvas-shell.dragover{border-color:var(--blue-light);background:var(--blue-pale)}
+  .canvas-shell small{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);background:rgba(15,23,42,.82);color:#fff;padding:6px 10px;border-radius:999px;font-size:11px;font-weight:700;pointer-events:none}
+  canvas{display:block;width:100%;height:auto;max-width:100%;border-radius:12px;box-shadow:0 14px 40px rgba(15,23,42,.10)}
+
+  .section{max-width:1100px;margin:0 auto;padding:0 24px 78px}
+  .section h2{font-size:26px;font-weight:900;letter-spacing:-.8px;margin-bottom:10px;text-align:center}
+  .section p.lead{max-width:720px;margin:0 auto 28px;text-align:center;color:var(--ink-muted);font-size:15px;line-height:1.7}
+  .info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .info-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:var(--shadow-sm)}
+  .info-card .ico{width:42px;height:42px;border-radius:12px;background:var(--blue-pale);display:flex;align-items:center;justify-content:center;color:var(--blue);margin-bottom:14px}
+  .info-card .ico svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2}
+  .info-card h3{font-size:16px;font-weight:800;margin-bottom:8px}
+  .info-card p{font-size:14px;color:var(--ink-muted);line-height:1.7}
+
+  .footer{border-top:1px solid var(--line);padding:24px;color:var(--ink-faint);text-align:center}
+  .footer-links{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin-bottom:12px}
+  .footer-links a{color:var(--blue);font-weight:700;font-size:13px}
+
+  .toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(20px);background:#0f172a;color:#fff;padding:12px 16px;border-radius:12px;box-shadow:var(--shadow-lg);opacity:0;transition:all .25s;z-index:9999;font-size:13px;font-weight:600;pointer-events:none;max-width:min(92vw,380px);text-align:center}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  @media (max-width: 980px){
+    .workspace{grid-template-columns:1fr}
+    .canvas-card{position:static}
+    .info-grid{grid-template-columns:1fr}
+  }
+  @media (max-width: 620px){
+    .navbar,.wrap,.hero,.section{padding-left:16px;padding-right:16px}
+    .nav-inner{height:auto;padding:12px 0;flex-direction:column;align-items:flex-start}
+    .nav-actions{width:100%;justify-content:flex-start}
+    .hero{padding-top:36px}
+    h1{font-size:clamp(28px,10vw,42px)}
+    .card-head,.card-body,.canvas-wrap,.canvas-top{padding-left:16px;padding-right:16px}
+    .row-2{grid-template-columns:1fr}
+    .canvas-shell{min-height:480px;padding:12px}
+    .btn-row{gap:8px}
+  }
+</style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a class="logo" href="generator.html" aria-label="FlexQR Generator">
+        <span class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 20 20"><rect x="3" y="3" width="6" height="6" rx="1.5"/><rect x="11" y="3" width="6" height="6" rx="1.5"/><rect x="3" y="11" width="6" height="6" rx="1.5"/><rect x="12" y="12" width="2" height="2"/><rect x="15" y="12" width="2" height="2"/><rect x="12" y="15" width="2" height="2"/><rect x="15" y="15" width="2" height="2"/></svg>
+        </span>
+        <span>Flex<span style="color:var(--blue)">QR</span></span>
+      </a>
+      <div class="nav-actions">
+        <a class="nav-link" href="generator.html">← QR Generator</a>
+        <a class="nav-link" href="index.html">Home</a>
+        <button class="nav-btn" id="add-more-btn">Add Images</button>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="badge">Image Studio</div>
+    <h1>Layer, move, and style <span>multiple images</span> in one clean workspace</h1>
+    <p>Build polished social posts, thumbnails, banners, and collages with drag controls, layered images, and an editor that stays fast in the browser.</p>
+    <div class="trust"><span><i></i>Browser-based</span><span><i></i>Multiple layers</span><span><i></i>Mobile friendly</span><span><i></i>PNG export</span></div>
+  </section>
+
+  <main class="wrap">
+    <div class="workspace">
+      <section class="card">
+        <div class="card-head"><h2>Editor Controls</h2></div>
+        <div class="card-body">
+          <div class="field">
+            <label class="label">Add Images</label>
+            <label class="upload" for="files">
+              <input type="file" id="files" accept="image/*" multiple>
+              <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div>
+              <strong>Upload one or more images</strong>
+              <small>PNG, JPG, WEBP • multiple layers supported</small>
+            </label>
+          </div>
+
+          <div class="field">
+            <label class="label">Background Image</label>
+            <label class="upload" for="bgfile">
+              <input type="file" id="bgfile" accept="image/*">
+              <div class="icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8" cy="8" r="1.5"/><path d="M21 16l-5-5-4 4-2-2-7 7"/></svg></div>
+              <strong>Upload a background photo</strong>
+              <small>Optional — makes the layout more designed</small>
+            </label>
+            <div class="btn-row" style="margin-top:10px">
+              <button class="btn btn-secondary" id="remove-bg-btn" type="button">Remove Background</button>
+            </div>
+          </div>
+
+          <div class="field row-2">
+            <div>
+              <label class="label">Canvas Size</label>
+              <select class="select" id="canvas-size">
+                <option value="1200x900" selected>Landscape 4:3</option>
+                <option value="1080x1080">Square</option>
+                <option value="1080x1350">Portrait</option>
+                <option value="1600x900">Wide 16:9</option>
+              </select>
+            </div>
+            <div>
+              <label class="label">Background</label>
+              <div class="color-row">
+                <div class="swatch"><div class="preview-chip" id="bg-preview" style="background:#f8fafc"></div><input type="color" id="bg-color" value="#f8fafc"></div>
+                <input class="input" id="bg-hex" value="#f8fafc" style="font-family:monospace">
+              </div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">Layers</label>
+            <div class="layers-list" id="layers-list"></div>
+          </div>
+
+          <div class="field">
+            <label class="label">Selected Layer</label>
+            <div class="row-2">
+              <div><label class="label" style="margin-bottom:5px">X</label><div class="slider-row"><input class="slider" type="range" id="x-range" min="0" max="1200" value="0"><span class="val" id="x-val">0</span></div></div>
+              <div><label class="label" style="margin-bottom:5px">Y</label><div class="slider-row"><input class="slider" type="range" id="y-range" min="0" max="900" value="0"><span class="val" id="y-val">0</span></div></div>
+            </div>
+            <div class="row-2" style="margin-top:12px">
+              <div><label class="label" style="margin-bottom:5px">Scale</label><div class="slider-row"><input class="slider" type="range" id="scale-range" min="10" max="300" value="100"><span class="val" id="scale-val">100%</span></div></div>
+              <div><label class="label" style="margin-bottom:5px">Rotate</label><div class="slider-row"><input class="slider" type="range" id="rotate-range" min="-180" max="180" value="0"><span class="val" id="rotate-val">0°</span></div></div>
+            </div>
+            <div class="field" style="margin-top:12px">
+              <label class="label">Opacity</label>
+              <div class="slider-row"><input class="slider" type="range" id="opacity-range" min="10" max="100" value="100"><span class="val" id="opacity-val">100%</span></div>
+            </div>
+          </div>
+
+          <div class="btn-row">
+            <button class="btn btn-primary" id="center-btn" type="button">Center Layer</button>
+            <button class="btn btn-secondary" id="fit-btn" type="button">Fit to Canvas</button>
+            <button class="btn btn-outline" id="duplicate-btn" type="button">Duplicate Layer</button>
+            <button class="btn btn-ghost" id="front-btn" type="button">Bring Forward</button>
+            <button class="btn btn-ghost" id="back-btn" type="button">Send Backward</button>
+            <button class="btn btn-danger" id="delete-btn" type="button">Delete Layer</button>
+            <button class="btn btn-outline" id="export-btn" type="button">Export PNG</button>
+            <button class="btn btn-secondary" id="reset-btn" type="button">Reset All</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="canvas-card">
+        <div class="canvas-top">
+          <h3>Live Canvas</h3>
+          <div class="tools">
+            <button class="tiny-btn primary" id="export-btn2" type="button">Export PNG</button>
+            <button class="tiny-btn" id="fit-btn2" type="button">Fit</button>
+            <button class="tiny-btn" id="center-btn2" type="button">Center</button>
+          </div>
+        </div>
+        <div class="canvas-wrap">
+          <div class="canvas-shell" id="canvas-shell">
+            <canvas id="editor-canvas"></canvas>
+            <small>Drag images on the canvas to reposition them</small>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <section class="section">
+    <h2>Fast, clean, browser-based image editing</h2>
+    <p class="lead">Use one workspace to arrange multiple images, adjust their position and style, and export a finished design without installing anything.</p>
+    <div class="info-grid">
+      <div class="info-card"><div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 12h8M12 8v8"/></svg></div><h3>Multiple layers</h3><p>Add more than one image and place them in any order you want.</p></div>
+      <div class="info-card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M4 15l4-4 4 4 8-8"/><path d="M4 19h16"/></svg></div><h3>Drag and resize</h3><p>Move layers freely on the canvas and fine-tune the scale and rotation.</p></div>
+      <div class="info-card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M5 4h14v16H5z"/><path d="M9 8h6M9 12h6"/></svg></div><h3>Quick export</h3><p>Export the finished layout as a high-quality PNG in a single click.</p></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="generator.html">QR Generator</a>
+      <a href="index.html">Home</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </div>
+    <div>© 2025 FlexQR Studio · Clean browser-based image editing for modern creators</div>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+
+<script>
+const BASE_W = 1200;
+const BASE_H = 900;
+const canvas = document.getElementById('editor-canvas');
+const shell = document.getElementById('canvas-shell');
+const ctx = canvas.getContext('2d');
+const dpr = Math.max(1, window.devicePixelRatio || 1);
+
+let bgColor = '#f8fafc';
+let bgImage = null;
+let bgImageFile = null;
+let layers = [];
+let selectedId = null;
+let dragging = false;
+let dragDx = 0;
+let dragDy = 0;
+let dragSelected = null;
+let lastRenderSize = { w: BASE_W, h: BASE_H };
+
+function uid(){ return Math.random().toString(36).slice(2,10); }
+
+function toast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(window._toastTimer);
+  window._toastTimer = setTimeout(() => t.classList.remove('show'), 1800);
+}
+
+function hexSync(prefix){
+  const hex = document.getElementById(prefix + '-hex');
+  const color = document.getElementById(prefix + '-color');
+  const preview = document.getElementById(prefix + '-preview');
+  const v = hex.value.trim();
+  if (/^#[0-9a-fA-F]{6}$/.test(v)) {
+    color.value = v;
+    preview.style.background = v;
+    if (prefix === 'bg') bgColor = v;
+    render();
+  }
+}
+
+function resizeCanvas() {
+  canvas.width = Math.floor(BASE_W * dpr);
+  canvas.height = Math.floor(BASE_H * dpr);
+  canvas.style.width = '100%';
+  canvas.style.height = 'auto';
+  render();
+}
+
+function fitLayerToCanvas(layer) {
+  const maxW = BASE_W * 0.72;
+  const maxH = BASE_H * 0.72;
+  const scale = Math.min(maxW / layer.naturalW, maxH / layer.naturalH);
+  layer.scale = Math.min(3, Math.max(0.1, scale));
+  centerLayer(layer.id);
+}
+
+function centerLayer(id = selectedId) {
+  const layer = layers.find(l => l.id === id);
+  if (!layer) return;
+  const w = layer.naturalW * layer.scale;
+  const h = layer.naturalH * layer.scale;
+  layer.x = (BASE_W - w) / 2;
+  layer.y = (BASE_H - h) / 2;
+  syncLayerInputs(layer);
+  render();
+}
+
+function syncLayerInputs(layer) {
+  if (!layer) return;
+  document.getElementById('x-range').value = Math.round(layer.x);
+  document.getElementById('y-range').value = Math.round(layer.y);
+  document.getElementById('scale-range').value = Math.round(layer.scale * 100);
+  document.getElementById('rotate-range').value = Math.round(layer.rotate);
+  document.getElementById('opacity-range').value = Math.round(layer.opacity * 100);
+  document.getElementById('x-val').textContent = Math.round(layer.x);
+  document.getElementById('y-val').textContent = Math.round(layer.y);
+  document.getElementById('scale-val').textContent = Math.round(layer.scale * 100) + '%';
+  document.getElementById('rotate-val').textContent = Math.round(layer.rotate) + '°';
+  document.getElementById('opacity-val').textContent = Math.round(layer.opacity * 100) + '%';
+}
+
+function selectedLayer(){ return layers.find(l => l.id === selectedId) || null; }
+
+function updateLayerList(){
+  const list = document.getElementById('layers-list');
+  list.innerHTML = '';
+  if (!layers.length) {
+    const empty = document.createElement('div');
+    empty.className = 'layer-item';
+    empty.style.cursor = 'default';
+    empty.innerHTML = '<div class="layer-thumb"></div><div class="layer-meta"><strong>No layers yet</strong><small>Upload images to start</small></div>';
+    list.appendChild(empty);
+    return;
+  }
+  layers.slice().reverse().forEach(layer => {
+    const row = document.createElement('div');
+    row.className = 'layer-item' + (layer.id === selectedId ? ' active' : '');
+    row.innerHTML = `
+      <div class="layer-thumb" style="background-image:url('${layer.thumb}')"></div>
+      <div class="layer-meta"><strong>${layer.name}</strong><small>${Math.round(layer.opacity*100)}% · ${Math.round(layer.scale*100)}%</small></div>
+      <div style="display:flex;gap:6px;flex-shrink:0">
+        <button class="tiny-btn" type="button" style="padding:6px 8px">↑</button>
+        <button class="tiny-btn" type="button" style="padding:6px 8px">↓</button>
+      </div>`;
+    row.onclick = (e) => {
+      if (e.target.tagName === 'BUTTON') return;
+      selectLayer(layer.id);
+    };
+    const [up, down] = row.querySelectorAll('button');
+    up.onclick = (e) => { e.stopPropagation(); bringLayer(layer.id, 1); };
+    down.onclick = (e) => { e.stopPropagation(); bringLayer(layer.id, -1); };
+    list.appendChild(row);
+  });
+}
+
+function selectLayer(id){
+  selectedId = id;
+  updateLayerList();
+  syncLayerInputs(selectedLayer());
+  render();
+}
+
+function addFiles(fileList){
+  const files = Array.from(fileList || []).filter(f => f.type.startsWith('image/'));
+  if (!files.length) return;
+  files.forEach((file, idx) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const img = new Image();
+      img.onload = () => {
+        const maxW = 360;
+        const maxH = 360;
+        const scale = Math.min(maxW / img.naturalWidth, maxH / img.naturalHeight, 1);
+        const layer = {
+          id: uid(),
+          name: file.name.replace(/\.[^.]+$/, ''),
+          img,
+          thumb: reader.result,
+          naturalW: img.naturalWidth,
+          naturalH: img.naturalHeight,
+          x: (BASE_W - img.naturalWidth * scale) / 2 + idx * 24,
+          y: (BASE_H - img.naturalHeight * scale) / 2 + idx * 24,
+          scale,
+          rotate: 0,
+          opacity: 1
+        };
+        layers.push(layer);
+        selectedId = layer.id;
+        updateLayerList();
+        syncLayerInputs(layer);
+        render();
+        toast('Image added');
+      };
+      img.src = reader.result;
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
+function setBackgroundImage(file){
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    const img = new Image();
+    img.onload = () => { bgImage = img; bgImageFile = reader.result; render(); toast('Background added'); };
+    img.src = reader.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+function removeBackground(){
+  bgImage = null; bgImageFile = null; document.getElementById('bgfile').value = ''; render(); toast('Background removed');
+}
+
+function bringLayer(id, dir){
+  const i = layers.findIndex(l => l.id === id);
+  if (i < 0) return;
+  const j = i + dir;
+  if (j < 0 || j >= layers.length) return;
+  [layers[i], layers[j]] = [layers[j], layers[i]];
+  updateLayerList(); render();
+}
+
+function duplicateLayer(){
+  const layer = selectedLayer();
+  if (!layer) return;
+  const dup = { ...layer, id: uid(), name: layer.name + ' copy' };
+  layers.splice(layers.indexOf(layer) + 1, 0, dup);
+  selectedId = dup.id; updateLayerList(); syncLayerInputs(dup); render();
+}
+
+function deleteLayer(){
+  const layer = selectedLayer();
+  if (!layer) return;
+  layers = layers.filter(l => l.id !== layer.id);
+  selectedId = layers[layers.length - 1]?.id || null;
+  updateLayerList(); syncLayerInputs(selectedLayer()); render();
+}
+
+function resetAll(){
+  layers = [];
+  selectedId = null;
+  bgImage = null;
+  bgImageFile = null;
+  bgColor = '#f8fafc';
+  document.getElementById('bg-color').value = bgColor;
+  document.getElementById('bg-hex').value = bgColor;
+  document.getElementById('bg-preview').style.background = bgColor;
+  document.getElementById('files').value = '';
+  document.getElementById('bgfile').value = '';
+  updateLayerList();
+  render();
+  toast('Editor reset');
+}
+
+function render(){
+  const w = canvas.width = Math.floor(BASE_W * dpr);
+  const h = canvas.height = Math.floor(BASE_H * dpr);
+  const ctx2 = ctx;
+  ctx2.setTransform(dpr,0,0,dpr,0,0);
+  ctx2.clearRect(0,0,BASE_W,BASE_H);
+
+  // background
+  ctx2.fillStyle = bgColor;
+  ctx2.fillRect(0,0,BASE_W,BASE_H);
+  const g = ctx2.createLinearGradient(0,0,BASE_W,BASE_H);
+  g.addColorStop(0,'rgba(255,255,255,.25)');
+  g.addColorStop(1,'rgba(37,99,235,.06)');
+  ctx2.fillStyle = g;
+  ctx2.fillRect(0,0,BASE_W,BASE_H);
+
+  if (bgImage) {
+    ctx2.save();
+    ctx2.globalAlpha = 0.92;
+    drawCover(ctx2, bgImage, 0, 0, BASE_W, BASE_H);
+    ctx2.restore();
+  }
+
+  // subtle grid overlay
+  ctx2.save();
+  ctx2.globalAlpha = 0.08;
+  ctx2.strokeStyle = '#2563eb';
+  ctx2.lineWidth = 1;
+  for (let x = 0; x <= BASE_W; x += 120) { ctx2.beginPath(); ctx2.moveTo(x,0); ctx2.lineTo(x,BASE_H); ctx2.stroke(); }
+  for (let y = 0; y <= BASE_H; y += 120) { ctx2.beginPath(); ctx2.moveTo(0,y); ctx2.lineTo(BASE_W,y); ctx2.stroke(); }
+  ctx2.restore();
+
+  // layers
+  layers.forEach(layer => {
+    const w0 = layer.naturalW * layer.scale;
+    const h0 = layer.naturalH * layer.scale;
+    const cx = layer.x + w0/2;
+    const cy = layer.y + h0/2;
+    ctx2.save();
+    ctx2.translate(cx, cy);
+    ctx2.rotate(layer.rotate * Math.PI / 180);
+    ctx2.globalAlpha = layer.opacity;
+    ctx2.drawImage(layer.img, -w0/2, -h0/2, w0, h0);
+    if (layer.id === selectedId) {
+      ctx2.globalAlpha = 1;
+      ctx2.lineWidth = 2.5;
+      ctx2.setLineDash([10,8]);
+      ctx2.strokeStyle = '#2563eb';
+      ctx2.strokeRect(-w0/2, -h0/2, w0, h0);
+      ctx2.setLineDash([]);
+    }
+    ctx2.restore();
+  });
+
+  // drag hint if empty
+  if (!layers.length) {
+    ctx2.save();
+    ctx2.fillStyle = 'rgba(15,23,42,.45)';
+    ctx2.font = '700 20px Inter';
+    ctx2.textAlign = 'center';
+    ctx2.fillText('Upload images to start editing', BASE_W/2, BASE_H/2 - 8);
+    ctx2.font = '500 13px Inter';
+    ctx2.fillText('Drag, resize, rotate, and reorder layers', BASE_W/2, BASE_H/2 + 18);
+    ctx2.restore();
+  }
+}
+
+function drawCover(ctx, img, x, y, w, h){
+  const ir = img.naturalWidth / img.naturalHeight;
+  const rr = w / h;
+  let dw, dh, dx, dy;
+  if (ir > rr) {
+    dh = h; dw = h * ir; dx = x - (dw - w)/2; dy = y;
+  } else {
+    dw = w; dh = w / ir; dx = x; dy = y - (dh - h)/2;
+  }
+  ctx.drawImage(img, dx, dy, dw, dh);
+}
+
+function pointToBase(e){
+  const rect = canvas.getBoundingClientRect();
+  const x = (e.clientX - rect.left) * BASE_W / rect.width;
+  const y = (e.clientY - rect.top) * BASE_H / rect.height;
+  return { x, y };
+}
+
+function hitTest(px, py, layer){
+  const w0 = layer.naturalW * layer.scale;
+  const h0 = layer.naturalH * layer.scale;
+  const cx = layer.x + w0/2;
+  const cy = layer.y + h0/2;
+  const rad = -layer.rotate * Math.PI / 180;
+  const dx = px - cx;
+  const dy = py - cy;
+  const rx = dx * Math.cos(rad) - dy * Math.sin(rad);
+  const ry = dx * Math.sin(rad) + dy * Math.cos(rad);
+  return Math.abs(rx) <= w0/2 && Math.abs(ry) <= h0/2;
+}
+
+canvas.addEventListener('pointerdown', (e) => {
+  if (!layers.length) return;
+  const p = pointToBase(e);
+  for (let i = layers.length - 1; i >= 0; i--) {
+    const layer = layers[i];
+    if (hitTest(p.x, p.y, layer)) {
+      selectLayer(layer.id);
+      dragging = true;
+      dragSelected = layer;
+      dragDx = p.x - layer.x;
+      dragDy = p.y - layer.y;
+      canvas.setPointerCapture(e.pointerId);
+      break;
+    }
+  }
+});
+canvas.addEventListener('pointermove', (e) => {
+  if (!dragging || !dragSelected) return;
+  const p = pointToBase(e);
+  dragSelected.x = Math.max(-2000, Math.min(4000, p.x - dragDx));
+  dragSelected.y = Math.max(-2000, Math.min(4000, p.y - dragDy));
+  syncLayerInputs(dragSelected);
+  render();
+});
+canvas.addEventListener('pointerup', () => { dragging = false; dragSelected = null; });
+canvas.addEventListener('pointercancel', () => { dragging = false; dragSelected = null; });
+
+function exportPNG(){
+  if (!layers.length) { toast('Add at least one image first'); return; }
+  const out = document.createElement('canvas');
+  out.width = BASE_W;
+  out.height = BASE_H;
+  const octx = out.getContext('2d');
+  octx.fillStyle = bgColor; octx.fillRect(0,0,BASE_W,BASE_H);
+  if (bgImage) drawCover(octx, bgImage, 0, 0, BASE_W, BASE_H);
+  layers.forEach(layer => {
+    const w0 = layer.naturalW * layer.scale;
+    const h0 = layer.naturalH * layer.scale;
+    octx.save();
+    octx.translate(layer.x + w0/2, layer.y + h0/2);
+    octx.rotate(layer.rotate * Math.PI / 180);
+    octx.globalAlpha = layer.opacity;
+    octx.drawImage(layer.img, -w0/2, -h0/2, w0, h0);
+    octx.restore();
+  });
+  const a = document.createElement('a');
+  a.href = out.toDataURL('image/png');
+  a.download = 'flexqr-image-editor.png';
+  a.click();
+  toast('Export started');
+}
+
+function attachLayerControls(){
+  const apply = () => {
+    const layer = selectedLayer();
+    if (!layer) return;
+    layer.x = parseFloat(document.getElementById('x-range').value);
+    layer.y = parseFloat(document.getElementById('y-range').value);
+    layer.scale = parseFloat(document.getElementById('scale-range').value) / 100;
+    layer.rotate = parseFloat(document.getElementById('rotate-range').value);
+    layer.opacity = parseFloat(document.getElementById('opacity-range').value) / 100;
+    syncLayerInputs(layer);
+    updateLayerList();
+    render();
+  };
+  ['x-range','y-range','scale-range','rotate-range','opacity-range'].forEach(id => {
+    document.getElementById(id).addEventListener('input', apply);
+  });
+}
+
+// Events
+window.addEventListener('resize', () => render());
+document.getElementById('files').addEventListener('change', e => addFiles(e.target.files));
+document.getElementById('bgfile').addEventListener('change', e => setBackgroundImage(e.target.files[0]));
+document.getElementById('remove-bg-btn').addEventListener('click', removeBackground);
+document.getElementById('bg-color').addEventListener('input', e => { document.getElementById('bg-hex').value = e.target.value; bgColor = e.target.value; document.getElementById('bg-preview').style.background = e.target.value; render(); });
+document.getElementById('bg-hex').addEventListener('input', () => hexSync('bg'));
+document.getElementById('add-more-btn').addEventListener('click', () => document.getElementById('files').click());
+document.getElementById('center-btn').addEventListener('click', () => centerLayer());
+document.getElementById('center-btn2').addEventListener('click', () => centerLayer());
+document.getElementById('fit-btn').addEventListener('click', () => { const l = selectedLayer(); if (l) { fitLayerToCanvas(l); updateLayerList(); render(); } });
+document.getElementById('fit-btn2').addEventListener('click', () => { const l = selectedLayer(); if (l) { fitLayerToCanvas(l); updateLayerList(); render(); } });
+document.getElementById('duplicate-btn').addEventListener('click', duplicateLayer);
+document.getElementById('front-btn').addEventListener('click', () => selectedId && bringLayer(selectedId, 1));
+document.getElementById('back-btn').addEventListener('click', () => selectedId && bringLayer(selectedId, -1));
+document.getElementById('delete-btn').addEventListener('click', deleteLayer);
+document.getElementById('reset-btn').addEventListener('click', resetAll);
+document.getElementById('export-btn').addEventListener('click', exportPNG);
+document.getElementById('export-btn2').addEventListener('click', exportPNG);
+document.getElementById('canvas-size').addEventListener('change', () => toast('Canvas presets are visual only in this version'));
+
+attachLayerControls();
+resizeCanvas();
+updateLayerList();
+render();
+
+// make drop zone feel nice
+shell.addEventListener('dragover', (e) => { e.preventDefault(); shell.classList.add('dragover'); });
+shell.addEventListener('dragleave', () => shell.classList.remove('dragover'));
+shell.addEventListener('drop', (e) => {
+  e.preventDefault();
+  shell.classList.remove('dragover');
+  addFiles(e.dataTransfer.files);
+});
+</script>
+</body>
+</html>

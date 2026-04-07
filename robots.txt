@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://murthyraj221-max.github.io/flexqr/sitemap.xml
