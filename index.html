@@ -1642,6 +1642,12 @@ function buildQROptions() {
 document.getElementById('btn-generate').addEventListener('click', generateQR);
 
 async function generateQR() {
+const inputValue = document.getElementById("qr-input").value;
+
+if (!inputValue) {
+  alert("Please enter something");
+  return;
+}
   const loading = document.getElementById('qr-loading');
   const output  = document.getElementById('qr-output');
   const placeholder = document.getElementById('qr-placeholder');
