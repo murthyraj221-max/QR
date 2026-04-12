@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About FlexQR | QR Generator & Stylish Name Generator</title>
+<meta name="description" content="Learn what FlexQR does, how the QR Code Generator and Stylish Name Generator work, and how the site is designed around privacy, speed, and simple usability." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --blue: #2563eb;
+    --blue-light: #3b82f6;
+    --blue-pale: #eff6ff;
+    --blue-mid: #dbeafe;
+    --ink: #0f172a;
+    --ink-soft: #334155;
+    --ink-muted: #64748b;
+    --ink-faint: #94a3b8;
+    --line: #e2e8f0;
+    --line-soft: #f1f5f9;
+    --white: #ffffff;
+    --surface: #f8fafc;
+    --card: #ffffff;
+    --radius-sm: 8px;
+    --radius: 14px;
+    --radius-lg: 20px;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+    --shadow: 0 4px 16px rgba(0,0,0,.08), 0 1px 4px rgba(0,0,0,.04);
+    --transition: 180ms cubic-bezier(.4,0,.2,1);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;font-size:16px}
+  body{font-family:'Inter',sans-serif;background:var(--surface);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{text-decoration:none}
+  .navbar{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between}
+  .nav-logo{font-weight:800;font-size:22px;color:var(--ink);letter-spacing:-.5px;display:flex;align-items:center;gap:8px}
+  .nav-logo-mark{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--blue),#4f46e5);display:inline-flex;align-items:center;justify-content:center;box-shadow:0 8px 18px rgba(37,99,235,.22);flex-shrink:0}
+  .nav-logo-mark .qr-mini{width:16px;height:16px;display:grid;grid-template-columns:repeat(2,1fr);gap:2px}
+  .nav-logo-mark .qr-mini span{width:7px;height:7px;border-radius:2px;background:#fff;display:block}
+  .nav-links{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .nav-link{font-size:13.5px;font-weight:600;color:var(--ink-muted);padding:7px 12px;border-radius:8px;border:1px solid transparent;transition:all var(--transition)}
+  .nav-link:hover{color:var(--ink);background:var(--line-soft);border-color:var(--line)}
+  .hero{padding:56px 24px 40px;background:linear-gradient(180deg,#fff 0%,var(--surface) 100%);text-align:center}
+  .hero-badge{display:inline-flex;align-items:center;gap:6px;background:var(--blue-pale);color:var(--blue);font-size:12.5px;font-weight:700;padding:5px 12px;border-radius:999px;border:1px solid var(--blue-mid);margin-bottom:18px;letter-spacing:.3px}
+  .hero h1{font-size:clamp(28px,5vw,44px);font-weight:800;letter-spacing:-1px;line-height:1.15;color:var(--ink);margin-bottom:12px}
+  .hero h1 span{color:var(--blue)}
+  .hero p{font-size:16px;color:var(--ink-muted);max-width:760px;margin:0 auto 18px}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 20px 80px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow);overflow:hidden}
+  .card-header{padding:18px 22px 16px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .card-title{font-size:15px;font-weight:800;letter-spacing:-.2px}
+  .card-sub{font-size:12px;color:var(--ink-faint);margin-top:3px}
+  .content{padding:22px}
+  .section{margin-bottom:22px}
+  .eyebrow{font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);margin-bottom:8px}
+  .content h2,.content h3{color:var(--ink);letter-spacing:-.25px}
+  .content h2{font-size:21px;margin:0 0 10px}
+  .content h3{font-size:16px;margin:0 0 8px}
+  .content p,.content li{color:var(--ink-soft);line-height:1.75;font-size:14px}
+  .content ul{padding-left:18px}
+  .badge-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .badge{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);color:var(--ink-soft);padding:7px 10px;border-radius:999px;font-size:12px;font-weight:700}
+  .badge strong{color:var(--blue)}
+  .seo{max-width:860px;margin:0 auto 90px;padding:0 24px}
+  .seo h2{font-size:28px;font-weight:800;letter-spacing:-.6px;color:var(--ink);text-align:center;margin-bottom:10px}
+  .seo p.lead{text-align:center;color:var(--ink-muted);margin-bottom:28px}
+  .seo-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .seo-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);padding:22px;box-shadow:var(--shadow-sm)}
+  .seo-card h3{font-size:16px;font-weight:800;margin-bottom:8px}
+  .faq-list{max-width:760px;margin:36px auto 0}
+  .faq-item{border:1px solid var(--line);border-radius:14px;background:#fff;margin-bottom:10px;overflow:hidden;box-shadow:var(--shadow-sm)}
+  .faq-q{width:100%;background:none;border:none;padding:16px 18px;text-align:left;display:flex;justify-content:space-between;align-items:center;gap:12px;font:inherit;font-size:14px;font-weight:700;color:var(--ink);cursor:pointer}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease}
+  .faq-item.open .faq-a{max-height:240px;padding:0 18px 16px}
+  .footer{border-top:1px solid var(--line);padding:28px 24px;text-align:center;font-size:12.5px;color:var(--ink-faint);background:#fff}
+  .footer-links{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
+  .footer-links a{color:var(--blue);font-weight:700;font-size:13px}
+  @media (max-width: 980px){.grid,.seo-grid{grid-template-columns:1fr}}
+  @media (max-width: 640px){.hero{padding:36px 16px 28px}.navbar{padding:0 16px}}
+</style>
+</head>
+<body>
+<nav class="navbar">
+  <a href="index.html" class="nav-logo"><span class="nav-logo-mark" aria-hidden="true"><span class="qr-mini"><span></span><span></span><span></span><span></span></span></span>FlexQR</a>
+  <div class="nav-links"><a class="nav-link" href="index.html">Generator</a><a class="nav-link" href="about.html">About</a><a class="nav-link" href="privacy.html">Privacy</a><a class="nav-link" href="terms.html">Terms</a></div>
+</nav>
+
+<header class="hero">
+  <div class="hero-badge">About FlexQR</div>
+  <h1>Two tools, one clean <span>browser-first</span> brand</h1>
+  <p>FlexQR is built to keep things simple: one side helps users generate QR codes quickly, and the other side helps them create stylish gaming names and copy-ready text styles without installing anything.</p>
+  <div class="badge-row">
+    <span class="badge">⚡ Fast in browser</span>
+    <span class="badge">🔒 Privacy-first design</span>
+    <span class="badge">🎮 Gaming-friendly</span>
+    <span class="badge">🧩 Easy to use</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="grid">
+    <article class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">What FlexQR offers</div>
+          <div class="card-sub">QR generator + stylish name generator</div>
+        </div>
+      </div>
+      <div class="content">
+        <div class="section">
+          <div class="eyebrow">Core idea</div>
+          <h2>Built for quick results</h2>
+          <p>FlexQR exists for people who want practical tools without clutter. The QR code generator is focused on creating downloadable QR codes for links, Wi-Fi details, contact cards, UPI-style shortcuts, and similar everyday uses. The stylish name generator is made for gamers, creators, and social media users who want text styles that stand out in bios, usernames, and display names.</p>
+        </div>
+        <div class="section">
+          <div class="eyebrow">Why people use it</div>
+          <h2>Useful for gaming, profiles, and sharing</h2>
+          <p>Users usually come to FlexQR for one of three reasons: to make a QR code fast, to make a profile name look different, or to copy text styles that can be pasted into games and social platforms. The design focuses on speed, readability, and simple controls so the site still feels lightweight on mobile phones.</p>
+        </div>
+        <div class="section">
+          <div class="eyebrow">Design style</div>
+          <h2>Simple interface, strong contrast, clear actions</h2>
+          <p>The site uses strong sections, readable fonts, and clear button labels so users can understand what each page does without guessing. The goal is not to overwhelm the visitor. It is to make the main action obvious, keep the layout tidy, and let the tool itself do the work.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">How the tools work</div>
+          <div class="card-sub">Browser-based, simple, and direct</div>
+        </div>
+      </div>
+      <div class="content">
+        <div class="section">
+          <div class="eyebrow">QR code flow</div>
+          <h3>Enter text, generate, download</h3>
+          <p>The QR tool is made around a direct workflow. A user enters content, chooses the options they want, and generates a QR code on the page. In a typical browser-first setup, that keeps the process fast and reduces the need for accounts or extra steps.</p>
+        </div>
+        <div class="section">
+          <div class="eyebrow">Stylish name flow</div>
+          <h3>Type a name, browse styles, copy the best one</h3>
+          <p>The name generator takes plain text and presents multiple style variations. That makes it easy to test different looks for gaming IDs, social media names, or decorative text. The user can copy a style and paste it wherever it is accepted.</p>
+        </div>
+        <div class="section">
+          <div class="eyebrow">What it is not</div>
+          <h3>No login, no complicated account system</h3>
+          <p>FlexQR is not trying to be a full account platform. It is a tool site. The experience is kept focused so the main task can be completed quickly, even on slower mobile devices.</p>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <section class="seo" style="margin-top:34px;">
+    <h2>More details for visitors and search engines</h2>
+    <p class="lead">This page explains what the site does, what users should expect, and how the brand is structured.</p>
+    <div class="seo-grid">
+      <div class="seo-card">
+        <h3>QR Code Generator</h3>
+        <p>The QR generator is intended for everyday sharing tasks. A clean QR can help turn a web link, message, or contact entry into something easy to scan from a phone camera. The emphasis is on convenience and a clean interface.</p>
+      </div>
+      <div class="seo-card">
+        <h3>Stylish Name Generator</h3>
+        <p>The stylish name generator is designed around creative text presentation. It helps users transform a normal name into options that feel more gaming-oriented, more modern, or more decorative.</p>
+      </div>
+      <div class="seo-card">
+        <h3>Privacy-first approach</h3>
+        <p>The site is written to be clear about data handling. Pages like Privacy and Terms explain how the tools should be used and what users should know before they share or copy content.</p>
+      </div>
+      <div class="seo-card">
+        <h3>Ad-friendly structure</h3>
+        <p>Long-form pages, clear headings, and complete legal pages help the site look more established and easier for users to understand. The pages are organized to be useful rather than thin or repetitive.</p>
+      </div>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" type="button">Is FlexQR only for QR codes?<span>+</span></button>
+        <div class="faq-a"><p>No. FlexQR includes QR code tools and a stylish name generator. The site is positioned as a small utility hub with multiple useful pages.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button">Who is the name generator made for?<span>+</span></button>
+        <div class="faq-a"><p>It is mainly aimed at gamers, creators, and social users who want stylish text for usernames, bios, comments, or display names.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button">Does the site need an account?<span>+</span></button>
+        <div class="faq-a"><p>The experience is designed to work without forcing a user account for basic browsing and generation tasks.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-links"><a href="index.html">Generator</a><a href="about.html">About</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms</a></div>
+  <p>© 2026 FlexQR · QR tools and stylish name tools in one place</p>
+</footer>
+
+<script>
+document.querySelectorAll('.faq-item').forEach(item => {
+  const btn = item.querySelector('.faq-q');
+  btn.addEventListener('click', () => item.classList.toggle('open'));
+});
+</script>
+</body>
+</html>

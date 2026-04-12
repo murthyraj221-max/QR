@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Terms of Service | FlexQR</title>
+<meta name="description" content="Read the FlexQR Terms of Service for the QR generator and stylish name generator, including acceptable use, user responsibility, disclaimers, and limitations." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --blue: #2563eb;
+    --blue-light: #3b82f6;
+    --blue-pale: #eff6ff;
+    --blue-mid: #dbeafe;
+    --ink: #0f172a;
+    --ink-soft: #334155;
+    --ink-muted: #64748b;
+    --ink-faint: #94a3b8;
+    --line: #e2e8f0;
+    --line-soft: #f1f5f9;
+    --white: #ffffff;
+    --surface: #f8fafc;
+    --card: #ffffff;
+    --radius-sm: 8px;
+    --radius: 14px;
+    --radius-lg: 20px;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+    --shadow: 0 4px 16px rgba(0,0,0,.08), 0 1px 4px rgba(0,0,0,.04);
+    --transition: 180ms cubic-bezier(.4,0,.2,1);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;font-size:16px}
+  body{font-family:'Inter',sans-serif;background:var(--surface);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{text-decoration:none}
+  .navbar{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between}
+  .nav-logo{font-weight:800;font-size:22px;color:var(--ink);letter-spacing:-.5px;display:flex;align-items:center;gap:8px}
+  .nav-logo-mark{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--blue),#4f46e5);display:inline-flex;align-items:center;justify-content:center;box-shadow:0 8px 18px rgba(37,99,235,.22);flex-shrink:0}
+  .nav-logo-mark .qr-mini{width:16px;height:16px;display:grid;grid-template-columns:repeat(2,1fr);gap:2px}
+  .nav-logo-mark .qr-mini span{width:7px;height:7px;border-radius:2px;background:#fff;display:block}
+  .nav-links{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .nav-link{font-size:13.5px;font-weight:600;color:var(--ink-muted);padding:7px 12px;border-radius:8px;border:1px solid transparent;transition:all var(--transition)}
+  .nav-link:hover{color:var(--ink);background:var(--line-soft);border-color:var(--line)}
+  .hero{padding:56px 24px 40px;background:linear-gradient(180deg,#fff 0%,var(--surface) 100%);text-align:center}
+  .hero-badge{display:inline-flex;align-items:center;gap:6px;background:var(--blue-pale);color:var(--blue);font-size:12.5px;font-weight:700;padding:5px 12px;border-radius:999px;border:1px solid var(--blue-mid);margin-bottom:18px;letter-spacing:.3px}
+  .hero h1{font-size:clamp(28px,5vw,44px);font-weight:800;letter-spacing:-1px;line-height:1.15;color:var(--ink);margin-bottom:12px}
+  .hero p{font-size:16px;color:var(--ink-muted);max-width:760px;margin:0 auto 18px}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 20px 80px}
+  .grid{display:grid;grid-template-columns:1.02fr .98fr;gap:22px;align-items:start}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow);overflow:hidden}
+  .card-header{padding:18px 22px 16px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .card-title{font-size:15px;font-weight:800;letter-spacing:-.2px}
+  .card-sub{font-size:12px;color:var(--ink-faint);margin-top:3px}
+  .content{padding:22px}
+  .section{margin-bottom:22px}
+  .eyebrow{font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);margin-bottom:8px}
+  .content h2,.content h3{color:var(--ink);letter-spacing:-.25px}
+  .content h2{font-size:21px;margin:0 0 10px}
+  .content h3{font-size:16px;margin:0 0 8px}
+  .content p,.content li{color:var(--ink-soft);line-height:1.75;font-size:14px}
+  .content ul{padding-left:18px}
+  .badge-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .badge{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);color:var(--ink-soft);padding:7px 10px;border-radius:999px;font-size:12px;font-weight:700}
+  .badge strong{color:var(--blue)}
+  .seo{max-width:860px;margin:0 auto 90px;padding:0 24px}
+  .seo h2{font-size:28px;font-weight:800;letter-spacing:-.6px;color:var(--ink);text-align:center;margin-bottom:10px}
+  .seo p.lead{text-align:center;color:var(--ink-muted);margin-bottom:28px}
+  .seo-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .seo-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);padding:22px;box-shadow:var(--shadow-sm)}
+  .seo-card h3{font-size:16px;font-weight:800;margin-bottom:8px}
+  .faq-list{max-width:760px;margin:36px auto 0}
+  .faq-item{border:1px solid var(--line);border-radius:14px;background:#fff;margin-bottom:10px;overflow:hidden;box-shadow:var(--shadow-sm)}
+  .faq-q{width:100%;background:none;border:none;padding:16px 18px;text-align:left;display:flex;justify-content:space-between;align-items:center;gap:12px;font:inherit;font-size:14px;font-weight:700;color:var(--ink);cursor:pointer}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease}
+  .faq-item.open .faq-a{max-height:300px;padding:0 18px 16px}
+  .footer{border-top:1px solid var(--line);padding:28px 24px;text-align:center;font-size:12.5px;color:var(--ink-faint);background:#fff}
+  .footer-links{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
+  .footer-links a{color:var(--blue);font-weight:700;font-size:13px}
+  @media (max-width: 980px){.grid,.seo-grid{grid-template-columns:1fr}}
+  @media (max-width: 640px){.hero{padding:36px 16px 28px}.navbar{padding:0 16px}}
+</style>
+</head>
+<body>
+<nav class="navbar">
+  <a href="index.html" class="nav-logo"><span class="nav-logo-mark" aria-hidden="true"><span class="qr-mini"><span></span><span></span><span></span><span></span></span></span>FlexQR</a>
+  <div class="nav-links"><a class="nav-link" href="index.html">Generator</a><a class="nav-link" href="about.html">About</a><a class="nav-link" href="privacy.html">Privacy</a><a class="nav-link" href="terms.html">Terms</a></div>
+</nav>
+
+<header class="hero">
+  <div class="hero-badge">Terms of Service</div>
+  <h1>Rules for using FlexQR fairly and safely</h1>
+  <p>These terms explain what users should and should not do while using the QR code generator and stylish name generator, plus the limits of responsibility for a free browser-based service.</p>
+  <div class="badge-row">
+    <span class="badge">⚖️ Clear usage rules</span>
+    <span class="badge">🛡️ Abuse protection</span>
+    <span class="badge">📌 Liability limits</span>
+    <span class="badge">🎯 Simple expectations</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="grid">
+    <article class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Acceptable use</div>
+          <div class="card-sub">What is allowed and what is not</div>
+        </div>
+      </div>
+      <div class="content">
+        <div class="section">
+          <div class="eyebrow">Use the service responsibly</div>
+          <h2>FlexQR is for lawful, ordinary use</h2>
+          <p>Users may use FlexQR for standard personal, educational, creative, or business tasks. The QR tool can help create scannable code content, and the stylish name generator can help with decorative text for gaming and profiles. The service is intended to be used respectfully and in compliance with the law.</p>
+        </div>
+
+        <div class="section">
+          <div class="eyebrow">Do not misuse the tools</div>
+          <h2>Harmful, illegal, or deceptive use is prohibited</h2>
+          <ul>
+            <li>Do not use the site for fraud, phishing, scams, malware, spam, or impersonation.</li>
+            <li>Do not generate or share content that is illegal, threatening, abusive, or harassing.</li>
+            <li>Do not use the site to violate another person’s privacy, rights, or intellectual property.</li>
+            <li>Do not attempt to overload, attack, scrape, or break the site, its forms, or its infrastructure.</li>
+            <li>Do not misrepresent the output as official, verified, or endorsed when it is not.</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <div class="eyebrow">User content</div>
+          <h2>You are responsible for what you enter</h2>
+          <p>Any text, links, names, QR content, or similar material entered by a user remains the user’s responsibility. If someone chooses to publish or distribute generated content, that person is responsible for checking the accuracy, legality, and appropriateness of the final result.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Disclaimers and limitations</div>
+          <div class="card-sub">A practical liability section for a free utility site</div>
+        </div>
+      </div>
+      <div class="content">
+        <div class="section">
+          <div class="eyebrow">Service availability</div>
+          <h3>Provided as-is</h3>
+          <p>FlexQR is provided on an “as-is” and “as-available” basis. We do not promise uninterrupted access, flawless results on every browser, or compatibility with every device, game, or platform. Some features may be updated, removed, or changed at any time.</p>
+        </div>
+
+        <div class="section">
+          <div class="eyebrow">No warranties</div>
+          <h3>We do not guarantee accuracy or acceptance</h3>
+          <p>Generated QR output and stylish text output are utility features. We do not guarantee that every QR code will scan in every scanner, or that every decorative character will display perfectly on every phone, game, app, or website. Font rendering varies by device and platform.</p>
+        </div>
+
+        <div class="section">
+          <div class="eyebrow">Indemnity-style responsibility</div>
+          <h3>Users should not place liability on the site for misuse</h3>
+          <p>To the maximum extent permitted by law, users agree that they are responsible for their own use of the service and for the consequences of any content they create, copy, distribute, or publish. If a user misuses the tools, violates laws, or harms another person, that responsibility belongs to the person who misused the service.</p>
+        </div>
+
+        <div class="section">
+          <div class="eyebrow">Intellectual property</div>
+          <h3>Respect ownership and brand rights</h3>
+          <p>Do not use the site to copy, imitate, or distribute material that belongs to someone else without permission. Trademarks, brand names, game names, logos, and other protected content remain the property of their respective owners.</p>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <section class="seo" style="margin-top:34px;">
+    <h2>Full terms for a small utility website</h2>
+    <p class="lead">These sections help explain how a free website should be used without hiding the important parts.</p>
+    <div class="seo-grid">
+      <div class="seo-card">
+        <h3>About the QR Generator</h3>
+        <p>The QR generator is a convenience tool. If you use it to share links or contact information, make sure the data is accurate before sharing it publicly. Any content you encode may be seen by anyone who scans the code.</p>
+      </div>
+      <div class="seo-card">
+        <h3>About the Stylish Name Generator</h3>
+        <p>The stylish name generator is for cosmetic text presentation. It can help create unique names, but you should still check whether the final text is allowed in the platform where you plan to use it.</p>
+      </div>
+      <div class="seo-card">
+        <h3>Site changes</h3>
+        <p>Features, content, legal pages, and visual design may be revised without notice. The current version of the terms should always be the version that applies.</p>
+      </div>
+      <div class="seo-card">
+        <h3>Policy awareness</h3>
+        <p>Google’s AdSense documentation notes that program policies can change, and publishers are expected to stay up to date with those policy changes.</p>
+      </div>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" type="button">Can I use FlexQR for commercial projects?<span>+</span></button>
+        <div class="faq-a"><p>Yes, ordinary lawful use is fine. Still, you are responsible for checking your final content, respecting third-party rights, and making sure the output fits the platform where it is used.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button">What happens if someone misuses the site?<span>+</span></button>
+        <div class="faq-a"><p>The terms place responsibility on the user who performs the misuse. A clear terms page should say that the service is not responsible for unlawful, abusive, or deceptive user behavior.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button">Are these legal terms final?<span>+</span></button>
+        <div class="faq-a"><p>They are a strong practical draft. A local lawyer or compliance professional can review the final wording if you want to publish a monetized site with extra confidence.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-links"><a href="index.html">Generator</a><a href="about.html">About</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms</a></div>
+  <p>© 2026 FlexQR · Fair use, clear rules, simple browser tools</p>
+</footer>
+
+<script>
+document.querySelectorAll('.faq-item').forEach(item => {
+  const btn = item.querySelector('.faq-q');
+  btn.addEventListener('click', () => item.classList.toggle('open'));
+});
+</script>
+</body>
+</html>
