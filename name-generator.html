@@ -10,7 +10,7 @@
   <meta name="theme-color" content="#0a0a0f" />
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -62,7 +62,7 @@
     .brand {
       display: flex; align-items: center; gap: 10px;
       text-decoration: none;
-      font-family: 'Syne', sans-serif; font-weight: 800; font-size: 17px;
+      font-family: 'Oxanium', sans-serif; font-weight: 800; font-size: 17px;
       color: var(--text); letter-spacing: -0.02em;
     }
     .brand-mark {
@@ -132,11 +132,12 @@
       border-radius: 2px;
     }
     .card-title {
-      font-family: 'Syne', sans-serif;
+      font-family: 'Oxanium', sans-serif;
       font-size: clamp(22px, 4vw, 30px);
-      font-weight: 800; letter-spacing: -0.03em; line-height: 1.1;
-      background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.65) 100%);
+      font-weight: 800; letter-spacing: -0.03em; line-height: 1.05;
+      background: linear-gradient(135deg, #ffd166 0%, #ff6b35 28%, #ff3d81 58%, #a855f7 100%);
       -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 18px rgba(255,107,53,0.18);
     }
     .card-sub { margin-top: 6px; font-size: 13px; color: var(--muted); }
 
@@ -285,7 +286,7 @@
       cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all .14s;
     }
     .style-copy-btn:hover { background: rgba(255,107,53,0.15); border-color: rgba(255,107,53,0.4); color: var(--accent); }
-    .style-text { font-size: 18px; font-weight: 500; color: var(--text); word-break: break-all; line-height: 1.35; margin-bottom: 8px; }
+    .style-text { font-size: 18px; font-weight: 500; color: var(--text); word-break: break-word; line-height: 1.35; margin-bottom: 8px; unicode-bidi: plaintext; font-family: 'Oxanium', 'DM Sans', sans-serif; }
     .style-cat {
       display: inline-block; font-size: 9px; font-weight: 700;
       letter-spacing: .08em; text-transform: uppercase;
@@ -300,8 +301,16 @@
       padding: 44px 20px; text-align: center; gap: 10px;
     }
     .results-empty-icon { font-size: 38px; opacity: 0.35; }
-    .results-empty-title { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; color: rgba(255,255,255,0.3); }
+    .results-empty-title { font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 700; color: rgba(255,255,255,0.3); }
     .results-empty-sub { font-size: 13px; color: var(--muted); }
+
+    .style-card.reveal {
+      animation: cardReveal .42s ease both;
+    }
+    @keyframes cardReveal {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
     /* HERO */
     .hero {
@@ -315,9 +324,9 @@
       color: var(--accent); margin-bottom: 24px;
     }
     .hero h1 {
-      font-family: 'Syne', sans-serif;
+      font-family: 'Oxanium', sans-serif;
       font-size: clamp(32px, 7vw, 56px);
-      font-weight: 800; letter-spacing: -0.04em; line-height: 1.05; margin-bottom: 18px;
+      font-weight: 800; letter-spacing: -0.04em; line-height: 1.04; margin-bottom: 18px;
     }
     .hero h1 .grad {
       background: linear-gradient(135deg, #ff6b35 0%, #ff3d81 50%, #a855f7 100%);
@@ -342,7 +351,7 @@
     /* SECTIONS */
     .section { max-width: 880px; margin: 0 auto; padding: 72px 20px 0; }
     .section-eyebrow { font-size: 10px; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; color: var(--purple); margin-bottom: 10px; }
-    .section-title { font-family: 'Syne', sans-serif; font-size: clamp(24px, 4vw, 36px); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 8px; }
+    .section-title { font-family: 'Oxanium', sans-serif; font-size: clamp(24px, 4vw, 36px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.08; margin-bottom: 8px; }
     .section-sub { font-size: 15px; color: var(--muted); max-width: 500px; line-height: 1.65; margin-bottom: 32px; }
 
     /* ABOUT CARDS */
@@ -360,7 +369,7 @@
     .about-card:nth-child(3)::before { background: linear-gradient(90deg,#06d6a0,#0ea5e9); }
     .about-card:nth-child(4)::before { background: linear-gradient(90deg,#ffd166,#f97316); }
     .about-icon { font-size: 26px; margin-bottom: 14px; }
-    .about-card h3 { font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+    .about-card h3 { font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 700; margin-bottom: 8px; }
     .about-card p { font-size: 13px; color: var(--muted); line-height: 1.65; }
 
     /* WHY */
@@ -392,9 +401,38 @@
       border-top: 1px solid var(--border);
       display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px;
     }
-    .footer-brand { display: flex; align-items: center; gap: 10px; font-family: 'Syne', sans-serif; font-weight: 800; font-size: 15px; }
+    .footer-brand { display: flex; align-items: center; gap: 10px; font-family: 'Oxanium', sans-serif; font-weight: 800; font-size: 15px; }
     .footer-brand .brand-mark { width: 28px; height: 28px; border-radius: 7px; box-shadow: none; }
     .footer p { font-size: 13px; color: var(--muted); }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 12px;
+    }
+    .footer-links a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      opacity: 0.8;
+      transition: opacity .2s, color .2s, transform .2s;
+    }
+    .footer-links a:hover { opacity: 1; color: var(--accent); transform: translateY(-1px); }
+
+    .style-results {
+      scroll-margin-top: 84px;
+    }
+    .style-results.results-focus {
+      animation: resultsPulse .85s ease;
+    }
+    @keyframes resultsPulse {
+      0% { transform: scale(1); }
+      30% { transform: scale(1.015); }
+      100% { transform: scale(1); }
+    }
 
     /* TOAST */
     #toast {
@@ -473,17 +511,16 @@
           <div class="filter-chips" id="filter-chips">
             <button class="filter-chip active" data-cat="all"><span class="chip-dot"></span>All</button>
             <button class="filter-chip" data-cat="gaming"><span class="chip-dot"></span>Gaming</button>
-            <button class="filter-chip" data-cat="elegant"><span class="chip-dot"></span>Elegant</button>
-            <button class="filter-chip" data-cat="viral"><span class="chip-dot"></span>Viral</button>
-            <button class="filter-chip" data-cat="dark"><span class="chip-dot"></span>Dark</button>
-            <button class="filter-chip" data-cat="fancy"><span class="chip-dot"></span>Fancy</button>
-            <button class="filter-chip" data-cat="modern"><span class="chip-dot"></span>Modern</button>
-            <button class="filter-chip" data-cat="fun"><span class="chip-dot"></span>Fun</button>
-            <button class="filter-chip" data-cat="tech"><span class="chip-dot"></span>Tech</button>
             <button class="filter-chip" data-cat="royal"><span class="chip-dot"></span>Royal</button>
-            <button class="filter-chip" data-cat="premium"><span class="chip-dot"></span>Premium</button>
-            <button class="filter-chip" data-cat="bright"><span class="chip-dot"></span>Bright</button>
+            <button class="filter-chip" data-cat="cyber"><span class="chip-dot"></span>Cyber</button>
+            <button class="filter-chip" data-cat="luxe"><span class="chip-dot"></span>Luxe</button>
+            <button class="filter-chip" data-cat="dark"><span class="chip-dot"></span>Dark</button>
             <button class="filter-chip" data-cat="clean"><span class="chip-dot"></span>Clean</button>
+            <button class="filter-chip" data-cat="bright"><span class="chip-dot"></span>Bright</button>
+            <button class="filter-chip" data-cat="modern"><span class="chip-dot"></span>Modern</button>
+            <button class="filter-chip" data-cat="elite"><span class="chip-dot"></span>Elite</button>
+            <button class="filter-chip" data-cat="stream"><span class="chip-dot"></span>Stream</button>
+            <button class="filter-chip" data-cat="pro"><span class="chip-dot"></span>Pro</button>
             <button class="filter-chip" data-cat="wide"><span class="chip-dot"></span>Wide</button>
             <button class="filter-chip" data-cat="tiny"><span class="chip-dot"></span>Tiny</button>
           </div>
@@ -611,6 +648,11 @@
         FlexQR
       </div>
       <p>Free stylish name generator for gamers and creators.</p>
+      <div class="footer-links">
+        <a href="about.html">About</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </div>
     </footer>
 
   </div>
@@ -664,15 +706,13 @@
     ['Serif Bold','elegant',SeB],
     ['Serif Italic','elegant',SeI],
     ['Serif Bold Italic','elegant',SeBI],
-    ['Monospace','tech',MONO],
-    ['Double Struck','fancy',DS],
+    ['Monospace','cyber',MONO],
+    ['Double Struck','luxe',DS],
     ['Script','elegant',SC],
     ['Script Bold','elegant',SCB],
-    ['Fraktur','dark',FR],
-    ['Fraktur Bold','dark',FRB],
     ['Small Caps','clean',SMCP],
-    ['Circled','fun',CIR],
-    ['Squared','fun',SQ],
+    ['Circled','bright',CIR],
+    ['Squared','bright',SQ],
     ['Superscript','tiny',SUP],
     ['Subscript','tiny',SUB],
     ['Wide','wide',WIDE],
@@ -683,54 +723,62 @@
     ['Ringed','clean',RNG],
     ['Double Underline','clean',DBL],
     ['Bubble','gaming',BUB],
-    ['Glitch','viral',glitch],
-    ['Mirror','viral',mirror],
-    ['Upside Down','viral',upsideDown],
-    ['Wavy Case','viral',wavy],
-    ['Zalgo Dark','dark',zalgo],
-    ['Leet Speak','gaming',leet],
+    ['Arcade','gaming',t=>String(t).split('').map((c,i)=>i%2===0?c.toUpperCase():c.toLowerCase()).join('')],
+    ['Neo','cyber',t=>spaced(String(t).toUpperCase(),' ')],
+    ['Boss','elite',t=>`<${String(t).toUpperCase()}>`],
+    ['Matrix','cyber',t=>String(t).split('').join('·')],
+    ['Pro','pro',t=>String(t).replace(/\s+/g,' ').trim()],
   ];
 
   const WRAP=[
-    ['Royal','gaming',t=>`꧁༒☬ ${t} ☬༒꧂`],
+    ['Royal','royal',t=>`「 ${t} 」`],
     ['Gamer','gaming',t=>`『 ${t} 』`],
-    ['Neon','modern',t=>`✦ ${t} ✦`],
+    ['Neon','cyber',t=>`✦ ${t} ✦`],
     ['Crown','royal',t=>`♛ ${t} ♛`],
-    ['Fire','viral',t=>`🔥 ${t} 🔥`],
-    ['Ice','viral',t=>`❄ ${t} ❄`],
-    ['Diamond','premium',t=>`◇ ${t} ◇`],
-    ['Premium','premium',t=>`✧ ${t} ✧`],
-    ['Shadow','dark',t=>`▐ ${t} ▌`],
-    ['Brackets','clean',t=>`【 ${t} 】`],
-    ['Arrow','clean',t=>`⟦ ${t} ⟧`],
+    ['Fire','gaming',t=>`🔥 ${t} 🔥`],
+    ['Ice','bright',t=>`❄ ${t} ❄`],
+    ['Diamond','luxe',t=>`◆ ${t} ◆`],
+    ['Premium','luxe',t=>`✧ ${t} ✧`],
+    ['Shadow','dark',t=>`╭ ${t} ╮`],
+    ['Brackets','clean',t=>`【${t}】`],
+    ['Arrow','clean',t=>`〔${t}〕`],
     ['Star','bright',t=>`★ ${t} ★`],
-    ['Tribal','gaming',t=>`𓆩 ${t} 𓆪`],
+    ['Tribal','gaming',t=>`⟪ ${t} ⟫`],
     ['Mystic','gaming',t=>`⚡ ${t} ⚡`],
-    ['Badge','modern',t=>`❖ ${t} ❖`],
+    ['Badge','elite',t=>`❖ ${t} ❖`],
     ['Slash','clean',t=>`// ${t} //`],
     ['Wave','modern',t=>`〰 ${t} 〰`],
-    ['Dark Skull','dark',t=>`☠ ${t} ☠`],
     ['Minimal','clean',t=>`• ${t} •`],
-    ['Gold','premium',t=>`𓂀 ${t} 𓂀`],
+    ['Gold','luxe',t=>`💎 ${t} 💎`],
     ['Spark','bright',t=>`✨ ${t} ✨`],
     ['Aura','bright',t=>`✺ ${t} ✺`],
     ['Line','clean',t=>`━━ ${t} ━━`],
     ['Oblique','clean',t=>`❘ ${t} ❘`],
-    ['Galaxy','gaming',t=>`🌌 ${t} 🌌`],
-    ['Sword','gaming',t=>`⚔️ ${t} ⚔️`],
+    ['Galaxy','cyber',t=>`🌌 ${t} 🌌`],
+    ['Sword','gaming',t=>`⚔ ${t} ⚔`],
     ['Shield','gaming',t=>`🛡 ${t} 🛡`],
     ['Dragon','dark',t=>`🐉 ${t} 🐉`],
-    ['Crystal','premium',t=>`💎 ${t} 💎`],
-    ['Demon','dark',t=>`꧁꧂ ${t} ꧁꧂`],
-    ['Elite','modern',t=>`[${t}]`],
-    ['Blade','gaming',t=>`⌇${t}⌇`],
+    ['Crystal','luxe',t=>`◇ ${t} ◇`],
+    ['Elite','elite',t=>`[ ${t} ]`],
+    ['Blade','gaming',t=>`| ${t} |`],
     ['Infinity','modern',t=>`∞ ${t} ∞`],
-    ['Bolt','viral',t=>`⚡⚡${t}⚡⚡`],
+    ['Bolt','cyber',t=>`⚡⚡ ${t} ⚡⚡`],
+    ['Stream','stream',t=>`➤ ${t} ➤`],
   ];
 
   const FONT_STYLES=[];
   let idx=1;
-  for(const[bn,bc,bf]of BASE){for(const[wn,wc,wf]of WRAP){FONT_STYLES.push({id:`s${String(idx).padStart(4,'0')}`,name:`${wn} ${bn}`,category:`${bc} • ${wc}`,transform(t){return wf(bf(t));}});idx++;}}
+  for(const [bn, bc, bf] of BASE){
+    for(const [wn, wc, wf] of WRAP){
+      FONT_STYLES.push({
+        id:`s${String(idx).padStart(4,'0')}`,
+        name:`${wn} ${bn}`,
+        category:`${bc} • ${wc}`,
+        transform(t){ return wf(bf(t)); }
+      });
+      idx++;
+    }
+  }
   window.FONT_STYLES=FONT_STYLES;
   window.FONT_STYLE_TOTAL=FONT_STYLES.length;
   </script>
@@ -762,7 +810,7 @@
 
   function esc(s){return String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');}
 
-  function renderStyles(){
+  function renderStyles(scrollToResults = false){
     const name=(document.getElementById('name-input').value||'').trim();
     const q=(document.getElementById('style-search').value||'').trim().toLowerCase();
     const box=document.getElementById('style-results');
@@ -793,21 +841,32 @@
     }
 
     const frag=document.createDocumentFragment();
-    styles.forEach(style=>{
+    styles.forEach((style,i)=>{
       const value=style.transform(name);
       const card=document.createElement('div');
-      card.className='style-card';
+      card.className='style-card reveal';
+      card.style.animationDelay=`${Math.min(i, 24) * 18}ms`;
       card.innerHTML=`<div class="style-meta"><div class="style-name">${esc(style.name)}</div><button class="style-copy-btn" type="button">Copy</button></div><div class="style-text">${esc(value)}</div><span class="style-cat">${esc(style.category)}</span>`;
       card.addEventListener('click',()=>copyText(value));
       card.querySelector('.style-copy-btn').addEventListener('click',e=>{e.stopPropagation();copyText(value);});
       frag.appendChild(card);
     });
     box.innerHTML='';box.appendChild(frag);
+
+    if (scrollToResults) {
+      box.classList.remove('results-focus');
+      void box.offsetWidth;
+      box.classList.add('results-focus');
+      box.scrollIntoView({behavior:'smooth', block:'start'});
+      setTimeout(()=>box.classList.remove('results-focus'),900);
+    }
   }
 
   document.addEventListener('DOMContentLoaded',()=>{
-    document.getElementById('name-generate').addEventListener('click',renderStyles);
-    document.getElementById('name-input').addEventListener('keydown',e=>{if(e.key==='Enter')renderStyles();});
+    document.getElementById('name-generate').addEventListener('click',()=>{
+      renderStyles(true);
+    });
+    document.getElementById('name-input').addEventListener('keydown',e=>{if(e.key==='Enter'){renderStyles(true);}});
     document.getElementById('style-search').addEventListener('input',renderStyles);
     document.querySelectorAll('.filter-chip').forEach(chip=>{
       chip.addEventListener('click',()=>{
