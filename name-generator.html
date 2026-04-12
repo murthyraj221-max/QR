@@ -6,647 +6,820 @@
   <title>Stylish Name Generator – 500+ Fonts for Gaming Names | FlexQR</title>
   <meta name="description" content="Generate 500+ stylish names for Free Fire, BGMI, CODM, Instagram bios, comments, and gaming profiles. Fast, free, browser-based, and copy-ready." />
   <meta name="robots" content="index,follow" />
-  <meta name="keywords" content="stylish name generator, free fire stylish name, bgmi stylish name, codm name generator, fancy text generator, gaming name fonts" />
   <link rel="canonical" href="https://flexqr.site/name-generator.html" />
-  <meta name="theme-color" content="#7c3aed" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Stylish Name Generator – 500+ Fonts | FlexQR" />
-  <meta property="og:description" content="Create stylish gaming names with 500+ font combinations, instant copy buttons, and a clean browser-based interface." />
-  <meta property="og:site_name" content="FlexQR" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Stylish Name Generator – 500+ Fonts | FlexQR" />
-  <meta name="twitter:description" content="A free stylish name generator for gaming names, bios, comments, and social profiles." />
+  <meta name="theme-color" content="#0a0a0f" />
   <link rel="icon" type="image/png" href="/favicon.png" />
-  <link rel="apple-touch-icon" href="/favicon.png" />
-  <link rel="shortcut icon" href="/favicon.png" />
-  <meta name="google-site-verification" content="86a-CeaOyw8USn3YAL84tgxhT9LFbY70t3k3FwViXvU" />
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MJJF1YWGXZ"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-MJJF1YWGXZ');
-  </script>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6165833379537140" crossorigin="anonymous"></script>
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "FlexQR Stylish Name Generator",
-    "url": "https://flexqr.site/name-generator.html",
-    "applicationCategory": "UtilityApplication",
-    "operatingSystem": "Web",
-    "description": "A free stylish name generator with 500+ font combinations for gaming names, bios, comments, and social profiles."
-  }
-  </script>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "How many styles are included?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "This stylish name generator includes 500+ combinations for gaming names, bios, and social text."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can I copy the styled name instantly?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. Every result has a copy button and the card itself can be clicked to copy the style."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Does it need a server?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. Everything runs directly in the browser."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Is it good for Free Fire and BGMI names?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. It is built for gaming names, stylish bios, and social profile text."
-        }
-      }
-    ]
-  }
-  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
 
   <style>
-    :root{
-      --accent:#8b5cf6;
-      --accent-2:#ec4899;
-      --accent-3:#ff7a18;
-      --accent-soft:#f7ecff;
-      --ink:#0f172a;
-      --muted:#64748b;
-      --line:#e2e8f0;
-      --surface:#fff8fb;
-      --card:#ffffff;
-      --shadow:0 14px 40px rgba(15,23,42,.08);
-      --shadow-soft:0 6px 20px rgba(15,23,42,.06);
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #08080f;
+      --card:    #0f0f1c;
+      --card2:   #141428;
+      --border:  rgba(255,255,255,0.07);
+      --border2: rgba(255,255,255,0.12);
+      --text:    #f0f0ff;
+      --muted:   #6a6a9a;
+      --accent:  #ff6b35;
+      --accent2: #ff3d81;
+      --purple:  #a855f7;
+      --teal:    #06d6a0;
+      --gold:    #ffd166;
     }
 
-    body.name-page{
-      background: linear-gradient(180deg,#ffffff 0%,#fff6fb 100%);
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
     }
 
-    body.name-page .navbar{
-      border-bottom: 1px solid rgba(241,245,249,.9);
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 50% at 15% -5%, rgba(168,85,247,0.13) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 85% 5%, rgba(255,107,53,0.10) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 60% at 50% 105%, rgba(255,61,129,0.08) 0%, transparent 60%);
+      pointer-events: none; z-index: 0;
     }
 
-    body.name-page .brand-mark{
-      background: linear-gradient(135deg,#ff7a18,#ff3d81);
-      box-shadow: 0 10px 22px rgba(255,61,129,.18);
+    /* NAVBAR */
+    .navbar {
+      position: sticky; top: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 24px; height: 60px;
+      background: rgba(8,8,15,0.88);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .brand {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none;
+      font-family: 'Syne', sans-serif; font-weight: 800; font-size: 17px;
+      color: var(--text); letter-spacing: -0.02em;
+    }
+    .brand-mark {
+      width: 34px; height: 34px; border-radius: 9px;
+      background: linear-gradient(135deg, #ff6b35, #ff3d81);
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3px; padding: 7px;
+      box-shadow: 0 0 20px rgba(255,107,53,0.4);
+    }
+    .brand-mark span { background: rgba(255,255,255,0.9); border-radius: 2px; }
+    .nav-links { display: flex; align-items: center; gap: 22px; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-pill {
+      font-size: 13px; font-weight: 600; color: var(--accent) !important;
+      padding: 6px 15px; border-radius: 999px;
+      border: 1px solid rgba(255,107,53,0.3); background: rgba(255,107,53,0.08);
+      transition: all .2s !important;
+    }
+    .nav-pill:hover { background: rgba(255,107,53,0.16) !important; border-color: rgba(255,107,53,0.5) !important; }
+
+    /* PAGE */
+    .page { position: relative; z-index: 1; }
+
+    /* GENERATOR SECTION */
+    .gen-section { max-width: 880px; margin: 0 auto; padding: 36px 20px 0; }
+
+    /* PREMIUM CARD */
+    .gen-card {
+      position: relative; border-radius: 28px; overflow: hidden;
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.04),
+        0 40px 100px rgba(0,0,0,0.7),
+        0 0 80px rgba(168,85,247,0.07),
+        inset 0 1px 0 rgba(255,255,255,0.07);
+    }
+    /* Glowing top line */
+    .gen-card::before {
+      content: ''; position: absolute;
+      top: 0; left: 8%; right: 8%; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,107,53,0.7) 30%, rgba(168,85,247,0.7) 70%, transparent);
+    }
+    /* Subtle dot grid */
+    .gen-card::after {
+      content: ''; position: absolute; inset: 0;
+      background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none;
     }
 
-    body.name-page .hero{
-      position: relative;
-      overflow: hidden;
+    .card-inner { position: relative; z-index: 1; padding: 30px 28px 28px; }
+
+    /* CARD HEADER */
+    .card-header {
+      display: flex; align-items: flex-start;
+      justify-content: space-between; gap: 16px; margin-bottom: 26px;
+    }
+    .card-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 10px; font-weight: 700; letter-spacing: .15em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 8px;
+    }
+    .card-eyebrow::before {
+      content: ''; width: 20px; height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      border-radius: 2px;
+    }
+    .card-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(22px, 4vw, 30px);
+      font-weight: 800; letter-spacing: -0.03em; line-height: 1.1;
+      background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.65) 100%);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .card-sub { margin-top: 6px; font-size: 13px; color: var(--muted); }
+
+    .card-badges { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; flex-shrink: 0; }
+    .badge {
+      font-size: 11px; font-weight: 700; padding: 5px 12px;
+      border-radius: 999px; white-space: nowrap;
+    }
+    .badge-orange { background: rgba(255,107,53,0.14); border: 1px solid rgba(255,107,53,0.3); color: var(--accent); }
+    .badge-purple { background: rgba(168,85,247,0.12); border: 1px solid rgba(168,85,247,0.25); color: #c084fc; }
+
+    /* INPUTS */
+    .input-group { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+    .field-wrap { position: relative; }
+    .field-icon {
+      position: absolute; left: 15px; top: 50%;
+      transform: translateY(-50%); font-size: 15px; pointer-events: none; opacity: 0.45;
+    }
+    .gen-input {
+      width: 100%; padding: 14px 16px 14px 44px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border2); border-radius: 14px;
+      font-size: 15px; font-family: 'DM Sans', sans-serif; font-weight: 500;
+      color: var(--text); outline: none;
+      transition: border-color .2s, box-shadow .2s, background .2s;
+    }
+    .gen-input::placeholder { color: var(--muted); font-weight: 400; }
+    .gen-input:focus {
+      border-color: rgba(255,107,53,0.55);
+      background: rgba(255,107,53,0.03);
+      box-shadow: 0 0 0 3px rgba(255,107,53,0.10), 0 0 24px rgba(255,107,53,0.05);
+    }
+    #style-search:focus {
+      border-color: rgba(168,85,247,0.55);
+      background: rgba(168,85,247,0.03);
+      box-shadow: 0 0 0 3px rgba(168,85,247,0.10), 0 0 24px rgba(168,85,247,0.05);
     }
 
-    body.name-page .hero::before{
-      content:"";
-      position:absolute;
-      inset:-120px auto auto 50%;
-      transform:translateX(-50%);
-      width:780px;
-      height:360px;
-      background: radial-gradient(circle at center, rgba(255,122,24,.18) 0%, rgba(236,72,153,.10) 40%, transparent 72%);
-      pointer-events:none;
+    /* CATEGORY CHIPS */
+    .filter-label {
+      font-size: 10px; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 9px;
     }
-
-    body.name-page .hero-badge{
-      background: linear-gradient(135deg, rgba(255,122,24,.14), rgba(236,72,153,.14));
-      border-color: rgba(255,122,24,.16);
-      color: #8b5cf6;
+    .filter-chips { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 20px; }
+    .filter-chip {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 6px 13px; border-radius: 999px;
+      font-size: 12px; font-weight: 600; font-family: 'DM Sans', sans-serif;
+      cursor: pointer; border: 1px solid var(--border2);
+      background: rgba(255,255,255,0.04); color: var(--muted);
+      transition: all .15s; white-space: nowrap; user-select: none;
     }
+    .filter-chip:hover { border-color: rgba(255,255,255,0.2); color: var(--text); background: rgba(255,255,255,0.07); }
+    .filter-chip.active { background: rgba(255,107,53,0.15); border-color: rgba(255,107,53,0.45); color: #ffaa80; }
+    .filter-chip[data-cat="gaming"].active   { background: rgba(6,214,160,0.12);  border-color: rgba(6,214,160,0.4);   color: var(--teal); }
+    .filter-chip[data-cat="elegant"].active  { background: rgba(168,85,247,0.14); border-color: rgba(168,85,247,0.4);  color: #c084fc; }
+    .filter-chip[data-cat="dark"].active     { background: rgba(120,120,180,0.14);border-color: rgba(150,150,200,0.3); color: #aaaadd; }
+    .filter-chip[data-cat="viral"].active    { background: rgba(255,61,129,0.14); border-color: rgba(255,61,129,0.4);  color: #ff8fb0; }
+    .filter-chip[data-cat="fancy"].active    { background: rgba(255,209,102,0.14);border-color: rgba(255,209,102,0.4);color: var(--gold); }
+    .filter-chip[data-cat="modern"].active   { background: rgba(96,165,250,0.14); border-color: rgba(96,165,250,0.4);  color: #93c5fd; }
+    .filter-chip[data-cat="fun"].active      { background: rgba(251,191,36,0.14); border-color: rgba(251,191,36,0.4);  color: #fbbf24; }
+    .filter-chip[data-cat="tech"].active     { background: rgba(34,211,238,0.14); border-color: rgba(34,211,238,0.4);  color: #22d3ee; }
+    .filter-chip[data-cat="royal"].active    { background: rgba(255,209,102,0.14);border-color: rgba(255,209,102,0.4);color: var(--gold); }
+    .filter-chip[data-cat="premium"].active  { background: rgba(168,85,247,0.14); border-color: rgba(168,85,247,0.4);  color: #c084fc; }
+    .filter-chip[data-cat="bright"].active   { background: rgba(250,250,80,0.10); border-color: rgba(250,250,80,0.35); color: #f5f580; }
+    .filter-chip[data-cat="tiny"].active     { background: rgba(200,200,255,0.10);border-color: rgba(200,200,255,0.3); color: #c8c8ff; }
+    .filter-chip[data-cat="wide"].active     { background: rgba(255,107,53,0.14); border-color: rgba(255,107,53,0.4);  color: #ffaa80; }
+    .filter-chip[data-cat="clean"].active    { background: rgba(100,255,200,0.10);border-color: rgba(100,255,200,0.3); color: #80ffcc; }
+    .chip-dot { width: 5px; height: 5px; border-radius: 50%; background: currentColor; opacity: 0.6; }
 
-    body.name-page .hero h1 span{
-      background: linear-gradient(135deg, #ff7a18, #ff3d81);
-      -webkit-background-clip:text;
-      background-clip:text;
-      -webkit-text-fill-color:transparent;
+    /* ACTION BUTTONS */
+    .action-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 18px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+      padding: 14px 20px; border-radius: 14px;
+      font-size: 14px; font-weight: 700; font-family: 'DM Sans', sans-serif;
+      cursor: pointer; border: none; transition: all .18s;
+      position: relative; overflow: hidden; letter-spacing: -0.01em;
     }
-
-    body.name-page .hero-copy{
-      max-width: 760px;
+    .btn::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(rgba(255,255,255,0.08), transparent);
+      pointer-events: none;
     }
-
-    body.name-page .btn-primary{
-      background: linear-gradient(135deg, #ff7a18, #ff3d81);
-      box-shadow: 0 10px 28px rgba(255, 84, 116, .24);
-    }
-
-    body.name-page .btn-primary:hover{
-      background: linear-gradient(135deg, #ff6710, #e11d74);
-      box-shadow: 0 14px 34px rgba(255, 84, 116, .30);
-    }
-
-    body.name-page .btn-secondary{
-      border-color: rgba(255, 122, 24, .22);
-      color: #7c3aed;
-      background: #fff;
-    }
-
-    body.name-page .btn-secondary:hover{
-      background: linear-gradient(135deg, rgba(255,122,24,.08), rgba(236,72,153,.08));
-      border-color: rgba(236,72,153,.24);
-      color: #7c3aed;
-    }
-
-    body.name-page .trust-row span{
-      background: rgba(255,255,255,.9);
-      border-color: rgba(255,122,24,.12);
-    }
-
-    body.name-page .section-shell{
-      padding-top: 18px;
-    }
-
-    body.name-page .name-card{
-      background: linear-gradient(135deg, #211036 0%, #4b1760 48%, #8a1d73 100%);
+    .btn-generate {
+      background: linear-gradient(135deg, #ff6b35 0%, #ff3d81 100%);
       color: #fff;
-      border: 1px solid rgba(255,255,255,.14);
-      box-shadow: 0 20px 60px rgba(88, 25, 92, .22);
-      position: relative;
-      overflow: hidden;
+      box-shadow: 0 8px 28px rgba(255,61,129,0.3), inset 0 1px 0 rgba(255,255,255,0.12);
     }
-
-    body.name-page .name-card::before{
-      content:"";
-      position:absolute;
-      top:-80px;
-      right:-80px;
-      width:220px;
-      height:220px;
-      border-radius:50%;
-      background: radial-gradient(circle, rgba(255,185,0,.42), transparent 68%);
-      pointer-events:none;
+    .btn-generate:hover { transform: translateY(-1px); box-shadow: 0 14px 36px rgba(255,61,129,0.4), inset 0 1px 0 rgba(255,255,255,0.15); }
+    .btn-generate:active { transform: translateY(0); }
+    .btn-copy-best {
+      background: rgba(168,85,247,0.12); color: #c084fc;
+      border: 1px solid rgba(168,85,247,0.28);
     }
+    .btn-copy-best:hover { background: rgba(168,85,247,0.2); border-color: rgba(168,85,247,0.5); transform: translateY(-1px); }
 
-    body.name-page .name-card::after{
-      content:"";
-      position:absolute;
-      left:-70px;
-      bottom:-80px;
-      width:220px;
-      height:220px;
-      border-radius:50%;
-      background: radial-gradient(circle, rgba(255,86,156,.26), transparent 68%);
-      pointer-events:none;
+    /* STATS BAR */
+    .stats-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 14px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border); border-radius: 12px;
+      margin-bottom: 16px;
     }
-
-    body.name-page .name-card .panel-top h3,
-    body.name-page .name-card .panel-top p,
-    body.name-page .name-card .field span,
-    body.name-page .name-card .stats-row,
-    body.name-page .name-card .helper{
-      color: rgba(255,255,255,.92);
+    .stats-count { font-size: 12px; font-weight: 700; color: var(--accent); }
+    .stats-hint { font-size: 11px; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+    .pulse {
+      width: 6px; height: 6px; border-radius: 50%; background: var(--teal);
+      animation: pulse 2s infinite;
     }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.4;transform:scale(0.75);} }
 
-    body.name-page .name-card .panel-top{
-      margin-bottom: 18px;
+    /* RESULTS GRID */
+    .style-results {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 10px; max-height: 450px;
+      overflow-y: auto; padding-right: 4px;
     }
+    .style-results::-webkit-scrollbar { width: 4px; }
+    .style-results::-webkit-scrollbar-track { background: transparent; }
+    .style-results::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
+    .style-results::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
 
-    body.name-page .name-card .field{
-      position: relative;
-      z-index: 1;
+    .style-card {
+      background: rgba(255,255,255,0.025);
+      border: 1px solid var(--border); border-radius: 14px; padding: 14px;
+      cursor: pointer; transition: all .16s;
+      position: relative; overflow: hidden;
     }
-
-    body.name-page .name-card .input{
-      background: rgba(255,255,255,.96);
-      border-color: rgba(255,255,255,.14);
-      color: #111827;
-      box-shadow: 0 8px 22px rgba(15,23,42,.06);
-    }
-
-    body.name-page .name-card .input::placeholder{
-      color: #94a3b8;
-    }
-
-    body.name-page .name-card .input:focus{
-      border-color: rgba(255,255,255,.9);
-      box-shadow: 0 0 0 4px rgba(255,255,255,.16);
-    }
-
-    body.name-page .name-card .style-results{
-      position: relative;
-      z-index: 1;
-    }
-
-    body.name-page .name-card .style-card{
-      background: rgba(255,255,255,.96);
-      border-color: rgba(255,255,255,.14);
-      box-shadow: 0 12px 26px rgba(15,23,42,.08);
-    }
-
-    body.name-page .name-card .style-card:hover{
-      border-color: rgba(255,122,24,.28);
-      box-shadow: 0 18px 34px rgba(15,23,42,.10);
+    .style-card:hover {
+      border-color: rgba(255,107,53,0.4);
+      background: rgba(255,107,53,0.04);
       transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.35);
+    }
+    .style-card:active { transform: translateY(0); }
+
+    .style-meta { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+    .style-name { font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+    .style-copy-btn {
+      font-size: 10px; font-weight: 700; padding: 3px 9px;
+      border-radius: 6px; border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.05); color: var(--muted);
+      cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all .14s;
+    }
+    .style-copy-btn:hover { background: rgba(255,107,53,0.15); border-color: rgba(255,107,53,0.4); color: var(--accent); }
+    .style-text { font-size: 18px; font-weight: 500; color: var(--text); word-break: break-all; line-height: 1.35; margin-bottom: 8px; }
+    .style-cat {
+      display: inline-block; font-size: 9px; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase;
+      padding: 3px 8px; border-radius: 4px;
+      background: rgba(255,255,255,0.05); color: var(--muted);
     }
 
-    body.name-page .name-card .style-name{
-      color: #ff5f98;
+    /* EMPTY STATE */
+    .results-empty {
+      grid-column: 1/-1; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 44px 20px; text-align: center; gap: 10px;
+    }
+    .results-empty-icon { font-size: 38px; opacity: 0.35; }
+    .results-empty-title { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; color: rgba(255,255,255,0.3); }
+    .results-empty-sub { font-size: 13px; color: var(--muted); }
+
+    /* HERO */
+    .hero {
+      max-width: 880px; margin: 0 auto; padding: 72px 20px 0;
+      text-align: center; position: relative;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 7px 18px; border-radius: 999px; font-size: 12px; font-weight: 600;
+      border: 1px solid rgba(255,107,53,0.25); background: rgba(255,107,53,0.08);
+      color: var(--accent); margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(32px, 7vw, 56px);
+      font-weight: 800; letter-spacing: -0.04em; line-height: 1.05; margin-bottom: 18px;
+    }
+    .hero h1 .grad {
+      background: linear-gradient(135deg, #ff6b35 0%, #ff3d81 50%, #a855f7 100%);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero-copy { font-size: 16px; color: var(--muted); max-width: 560px; margin: 0 auto 30px; line-height: 1.7; }
+    .hero-actions { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 30px; }
+    .btn-how {
+      padding: 12px 24px; border-radius: 14px; font-size: 14px; font-weight: 700;
+      font-family: 'DM Sans', sans-serif; color: var(--text);
+      background: rgba(255,255,255,0.06); border: 1px solid var(--border2);
+      cursor: pointer; text-decoration: none; transition: all .2s;
+    }
+    .btn-how:hover { background: rgba(255,255,255,0.1); }
+    .trust-pills { display: flex; align-items: center; justify-content: center; gap: 9px; flex-wrap: wrap; }
+    .trust-pill {
+      font-size: 12px; font-weight: 600; padding: 6px 14px;
+      border-radius: 999px; border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03); color: var(--muted);
     }
 
-    body.name-page .name-card .style-text{
-      color: #111827;
-      text-shadow: none;
-      font-size: 21px;
-    }
+    /* SECTIONS */
+    .section { max-width: 880px; margin: 0 auto; padding: 72px 20px 0; }
+    .section-eyebrow { font-size: 10px; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; color: var(--purple); margin-bottom: 10px; }
+    .section-title { font-family: 'Syne', sans-serif; font-size: clamp(24px, 4vw, 36px); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 8px; }
+    .section-sub { font-size: 15px; color: var(--muted); max-width: 500px; line-height: 1.65; margin-bottom: 32px; }
 
-    body.name-page .name-card .style-small{
-      color: #64748b;
+    /* ABOUT CARDS */
+    .about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; }
+    .about-card {
+      background: var(--card); border: 1px solid var(--border2);
+      border-radius: 20px; padding: 24px 20px;
+      position: relative; overflow: hidden;
+      transition: border-color .2s, transform .2s;
     }
+    .about-card:hover { border-color: rgba(255,255,255,0.15); transform: translateY(-3px); }
+    .about-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; }
+    .about-card:nth-child(1)::before { background: linear-gradient(90deg,#ff6b35,#ff3d81); }
+    .about-card:nth-child(2)::before { background: linear-gradient(90deg,#a855f7,#3b82f6); }
+    .about-card:nth-child(3)::before { background: linear-gradient(90deg,#06d6a0,#0ea5e9); }
+    .about-card:nth-child(4)::before { background: linear-gradient(90deg,#ffd166,#f97316); }
+    .about-icon { font-size: 26px; margin-bottom: 14px; }
+    .about-card h3 { font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+    .about-card p { font-size: 13px; color: var(--muted); line-height: 1.65; }
 
-    body.name-page .name-card .style-copy{
-      border-color: rgba(255,122,24,.18);
-      background: #fff;
+    /* WHY */
+    .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+    .why-card { background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 22px 20px; }
+    .why-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+    .why-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    /* FAQ */
+    .faq-list { display: flex; flex-direction: column; gap: 8px; }
+    .faq-list details {
+      background: var(--card); border: 1px solid var(--border2);
+      border-radius: 14px; padding: 16px 20px; transition: border-color .2s;
     }
-
-    body.name-page .name-card .style-copy:hover{
-      border-color: rgba(255,61,129,.22);
-      background: linear-gradient(135deg, rgba(255,122,24,.10), rgba(236,72,153,.10));
-      color: #7c3aed;
+    .faq-list details[open] { border-color: rgba(168,85,247,0.3); }
+    .faq-list summary {
+      font-weight: 600; font-size: 14px; cursor: pointer; list-style: none;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
     }
+    .faq-list summary::-webkit-details-marker { display: none; }
+    .faq-list summary::after { content: '+'; font-size: 20px; color: var(--muted); flex-shrink: 0; transition: transform .2s; }
+    .faq-list details[open] summary::after { transform: rotate(45deg); color: var(--purple); }
+    .faq-list details p { margin-top: 12px; font-size: 14px; color: var(--muted); line-height: 1.65; }
 
-    body.name-page .name-card .chip{
-      border-color: rgba(255,255,255,.18);
-      background: rgba(255,255,255,.08);
-      color: #fff;
+    /* FOOTER */
+    .footer {
+      max-width: 880px; margin: 70px auto 0;
+      padding: 28px 20px 40px;
+      border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px;
     }
+    .footer-brand { display: flex; align-items: center; gap: 10px; font-family: 'Syne', sans-serif; font-weight: 800; font-size: 15px; }
+    .footer-brand .brand-mark { width: 28px; height: 28px; border-radius: 7px; box-shadow: none; }
+    .footer p { font-size: 13px; color: var(--muted); }
 
-    body.name-page .name-card .chip:hover{
-      background: rgba(255,255,255,.16);
-      color: #fff;
-      border-color: rgba(255,255,255,.28);
+    /* TOAST */
+    #toast {
+      position: fixed; bottom: 24px; right: 24px; z-index: 9999;
+      background: rgba(15,15,28,0.96); backdrop-filter: blur(20px);
+      border: 1px solid rgba(6,214,160,0.35); color: var(--teal);
+      padding: 12px 18px; border-radius: 14px;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.6), 0 0 20px rgba(6,214,160,0.1);
+      font-weight: 700; font-size: 13px; max-width: 260px;
+      display: flex; align-items: center; gap: 8px;
+      animation: fadeIn .2s ease;
     }
+    #toast::before { content: '✓'; font-size: 14px; }
+    @keyframes fadeIn { from{opacity:0;transform:translateY(8px);} to{opacity:1;transform:translateY(0);} }
 
-    body.name-page .name-card .field.color-field{
-      background: rgba(255,255,255,.10);
-      border-color: rgba(255,255,255,.12);
+    @media (max-width: 620px) {
+      .card-inner { padding: 20px 16px 18px; }
+      .action-row { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .card-badges { display: none; }
+      .style-results { grid-template-columns: 1fr 1fr; }
+      .footer { flex-direction: column; align-items: flex-start; }
     }
-
-    body.name-page .name-card .field.color-field input[type="color"]{
-      width: 48px;
-      height: 38px;
-    }
-
-    body.name-page .name-card .full{
-      position: relative;
-      z-index: 1;
-    }
-
-    body.name-page .name-card .btn-primary{
-      background: linear-gradient(135deg, #ff7a18, #ff3d81);
-      box-shadow: 0 10px 26px rgba(255,61,129,.24);
-    }
-
-    body.name-page .name-card .btn-secondary{
-      background: rgba(255,255,255,.96);
-      color: #7c3aed;
-      border-color: rgba(255,255,255,.16);
-    }
-
-    body.name-page .name-card .btn-secondary:hover{
-      background: #fff;
-      color: #6d28d9;
-    }
-
-    body.name-page .stats-row{
-      display:flex;
-      justify-content:space-between;
-      gap:10px;
-      flex-wrap:wrap;
-      color: rgba(255,255,255,.82);
-    }
-
-    body.name-page .seo-copy .copy-grid article,
-    body.name-page .faq-list details{
-      background: #fff;
-    }
-
-    body.name-page .hero .trust-row{
-      margin-top: 18px;
-    }
-
-    body.name-page .mini-link{
-      font-size: 13px;
-      font-weight: 800;
-      color: #7c3aed;
-      display:inline-flex;
-      align-items:center;
-      gap:6px;
-      padding: 8px 14px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.9);
-      border: 1px solid rgba(124,58,237,.12);
-    }
-
-    body.name-page .mini-link:hover{
-      background: #fff;
-      box-shadow: 0 8px 22px rgba(15,23,42,.06);
-    }
-
-    @media (max-width: 720px){
-      body.name-page .nav-links{display:none}
-      body.name-page .hero h1{font-size: clamp(30px, 11vw, 50px);}
-      body.name-page .name-card .style-text{font-size: 19px;}
+    @media (max-width: 380px) {
+      .style-results { grid-template-columns: 1fr; }
     }
   </style>
 </head>
-<body class="name-page">
-  <a id="top"></a>
 
+<body>
   <nav class="navbar">
-    <a class="brand" href="index.html" aria-label="Back to FlexQR home">
+    <a class="brand" href="index.html">
       <span class="brand-mark"><span></span><span></span><span></span><span></span></span>
-      <span>FlexQR</span>
+      FlexQR
     </a>
     <div class="nav-links">
-      <a href="#style-section">Stylish Names</a>
+      <a href="#about">About</a>
       <a href="#faq">FAQ</a>
-      <a href="index.html" class="mini-link">Back to QR Tool</a>
+      <a href="index.html" class="nav-pill">← QR Tool</a>
     </div>
   </nav>
 
-  <header class="hero">
-    <div class="hero-badge">500+ Stylish Fonts • Free Fire • BGMI • CODM</div>
-    <h1>Create <span>Stylish Gaming Names</span><br />in Seconds</h1>
-    <p class="hero-copy">Turn a simple name into copy-ready styles for gaming IDs, bios, comments, and social profiles. Search styles, tap copy, and use it instantly — no signup, no server.</p>
-    <div class="hero-actions">
-      <a class="btn btn-primary" href="#style-section">Generate Styles</a>
-      <a class="btn btn-secondary" href="#faq">How it works</a>
-    </div>
-    <div class="trust-row">
-      <span>No signup</span>
-      <span>Copy-ready</span>
-      <span>Works in browser</span>
-      <span>500+ styles</span>
-    </div>
-  </header>
+  <div class="page">
 
-  <main>
-    <section class="section-shell" id="style-section">
-      <div class="section-heading">
-        <p class="eyebrow">STYLISH NAME GENERATOR</p>
-        <h2>Choose a style that feels bold, clean, or premium</h2>
-        <p>Made for gamers and creators who want names that stand out. The page keeps the focus on styling only, with a colorful card that feels fun and modern.</p>
-      </div>
+    <!-- GENERATOR CARD -->
+    <section class="gen-section">
+      <div class="gen-card">
+        <div class="card-inner">
 
-      <div class="panel name-card">
-        <div class="panel-top">
-          <div>
-            <h3>Stylish Name Generator</h3>
-            <p>Type once, then search, copy, and test different looks in seconds.</p>
+          <div class="card-header">
+            <div>
+              <div class="card-eyebrow">Stylish Name Generator</div>
+              <div class="card-title">Make your name<br />unforgettable</div>
+              <div class="card-sub">Type once · Browse categories · Copy instantly</div>
+            </div>
+            <div class="card-badges">
+              <span class="badge badge-orange">🔥 1000+ styles</span>
+              <span class="badge badge-purple">⚡ Instant</span>
+            </div>
           </div>
-        </div>
 
-        <div class="name-controls">
-          <input id="name-input" class="input" type="text" placeholder="Type your name here..." autocomplete="off" />
-          <input id="style-search" class="input" type="text" placeholder="Search styles (royal, gaming, neon...)" autocomplete="off" />
-          <button id="name-generate" class="btn btn-primary" type="button">Generate Styles</button>
-          <button id="copy-best" class="btn btn-secondary" type="button">Copy Best Style</button>
-        </div>
+          <div class="input-group">
+            <div class="field-wrap">
+              <span class="field-icon">✏️</span>
+              <input id="name-input" class="gen-input" type="text"
+                placeholder="Type your name or gaming tag..." autocomplete="off" />
+            </div>
+            <div class="field-wrap">
+              <span class="field-icon">🔍</span>
+              <input id="style-search" class="gen-input" type="text"
+                placeholder="Search: royal, neon, fraktur, bubble, fire..." autocomplete="off" />
+            </div>
+          </div>
 
-        <div class="stats-row" style="margin-top:14px;">
-          <span id="style-count">500+ styles available</span>
-          <span>Tap a card to copy</span>
-        </div>
+          <div class="filter-label">Browse by category</div>
+          <div class="filter-chips" id="filter-chips">
+            <button class="filter-chip active" data-cat="all"><span class="chip-dot"></span>All</button>
+            <button class="filter-chip" data-cat="gaming"><span class="chip-dot"></span>Gaming</button>
+            <button class="filter-chip" data-cat="elegant"><span class="chip-dot"></span>Elegant</button>
+            <button class="filter-chip" data-cat="viral"><span class="chip-dot"></span>Viral</button>
+            <button class="filter-chip" data-cat="dark"><span class="chip-dot"></span>Dark</button>
+            <button class="filter-chip" data-cat="fancy"><span class="chip-dot"></span>Fancy</button>
+            <button class="filter-chip" data-cat="modern"><span class="chip-dot"></span>Modern</button>
+            <button class="filter-chip" data-cat="fun"><span class="chip-dot"></span>Fun</button>
+            <button class="filter-chip" data-cat="tech"><span class="chip-dot"></span>Tech</button>
+            <button class="filter-chip" data-cat="royal"><span class="chip-dot"></span>Royal</button>
+            <button class="filter-chip" data-cat="premium"><span class="chip-dot"></span>Premium</button>
+            <button class="filter-chip" data-cat="bright"><span class="chip-dot"></span>Bright</button>
+            <button class="filter-chip" data-cat="clean"><span class="chip-dot"></span>Clean</button>
+            <button class="filter-chip" data-cat="wide"><span class="chip-dot"></span>Wide</button>
+            <button class="filter-chip" data-cat="tiny"><span class="chip-dot"></span>Tiny</button>
+          </div>
 
-        <div id="style-results" class="style-results" style="margin-top:14px;"></div>
+          <div class="action-row">
+            <button id="name-generate" class="btn btn-generate" type="button">✦ Generate Styles</button>
+            <button id="copy-best" class="btn btn-copy-best" type="button">⎘ Copy Best Style</button>
+          </div>
+
+          <div class="stats-bar">
+            <span class="stats-count" id="style-count">1000+ styles available</span>
+            <span class="stats-hint"><span class="pulse"></span>Tap any card to copy</span>
+          </div>
+
+          <div id="style-results" class="style-results">
+            <div class="results-empty">
+              <div class="results-empty-icon">✦</div>
+              <div class="results-empty-title">Ready to generate</div>
+              <div class="results-empty-sub">Type your name and press Generate Styles</div>
+            </div>
+          </div>
+
+        </div>
       </div>
     </section>
 
-    <section class="section-shell seo-copy">
-      <div class="section-heading">
-        <p class="eyebrow">WHY PEOPLE USE IT</p>
-        <h2>Simple text becomes better looking in one click</h2>
+    <!-- HERO -->
+    <header class="hero">
+      <div class="hero-badge">◆ 1000+ Stylish Fonts • Free Fire • BGMI • CODM</div>
+      <h1>Create <span class="grad">Stylish Gaming Names</span><br />in Seconds</h1>
+      <p class="hero-copy">Turn a plain name into a copy-ready masterpiece for gaming IDs, bios, comments, and profiles. No signup, no server — pure browser magic.</p>
+      <div class="hero-actions">
+        <a class="btn-how" href="#faq">How it works</a>
       </div>
-      <div class="copy-grid">
-        <article>
-          <h3>Gaming names that stand out</h3>
-          <p>Use stylish fonts for Free Fire, BGMI, CODM and other games when you want a unique username or clan name.</p>
-        </article>
-        <article>
-          <h3>Fast copy-ready results</h3>
-          <p>Every style appears as a card with a copy button, so users can test, compare, and paste without extra steps.</p>
-        </article>
-        <article>
-          <h3>Lightweight and private</h3>
-          <p>No login, no uploads, and no backend processing. Everything runs directly in the browser for a clean experience.</p>
-        </article>
+      <div class="trust-pills">
+        <span class="trust-pill">No signup</span>
+        <span class="trust-pill">Copy-ready</span>
+        <span class="trust-pill">Works offline</span>
+        <span class="trust-pill">1000+ styles</span>
+        <span class="trust-pill">Free forever</span>
+      </div>
+    </header>
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+      <div class="section-eyebrow">About</div>
+      <div class="section-title">Built for gamers,<br />loved by creators</div>
+      <div class="section-sub">FlexQR's name generator gives you 1000+ Unicode font styles instantly — no design skills needed.</div>
+      <div class="about-grid">
+        <div class="about-card">
+          <div class="about-icon">🎮</div>
+          <h3>Gaming-First Design</h3>
+          <p>Made for Free Fire, BGMI, CODM, and any game where a stylish name makes you stand out from the crowd.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-icon">⚡</div>
+          <h3>Instant Generation</h3>
+          <p>1000+ style combos generated in milliseconds, right in your browser — no loading, no waiting, no server.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-icon">📋</div>
+          <h3>One-Tap Copy</h3>
+          <p>Tap any style card and it's instantly on your clipboard. Paste it straight into your game or profile.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-icon">🔒</div>
+          <h3>100% Private & Free</h3>
+          <p>No login. No data sent anywhere. Everything runs in your browser. Always free, always clean.</p>
+        </div>
       </div>
     </section>
 
-    <section class="section-shell" id="faq">
-      <div class="section-heading">
-        <p class="eyebrow">FAQ</p>
-        <h2>Questions people ask</h2>
+    <!-- WHY -->
+    <section class="section">
+      <div class="section-eyebrow">Why People Use It</div>
+      <div class="section-title">Simple text becomes<br />instantly legendary</div>
+      <div class="section-sub" style="margin-bottom:28px">One click turns a plain name into something worth copying.</div>
+      <div class="why-grid">
+        <div class="why-card">
+          <h3>Stand-out usernames</h3>
+          <p>Unicode fonts render on most gaming platforms, making your username look unlike anyone else's.</p>
+        </div>
+        <div class="why-card">
+          <h3>Bios & comments</h3>
+          <p>Stylish text works across Instagram, Discord, YouTube comments, and WhatsApp status.</p>
+        </div>
+        <div class="why-card">
+          <h3>No design skills needed</h3>
+          <p>Just type your name, pick a category, and copy. Zero learning curve, no software to install.</p>
+        </div>
       </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+      <div class="section-eyebrow">FAQ</div>
+      <div class="section-title" style="margin-bottom:24px">Questions people ask</div>
       <div class="faq-list">
         <details>
-          <summary>How many stylish fonts are included?</summary>
-          <p>There are 500+ style combinations available, so you can pick a look that feels bold, premium, or playful.</p>
+          <summary>How many styles are included?</summary>
+          <p>Over 1000 combinations — made by crossing 33 Unicode font types with 34 wrapper/decoration styles. You can also filter by category like Gaming, Elegant, Dark, Viral, and more.</p>
         </details>
         <details>
           <summary>Can I use this for gaming names?</summary>
-          <p>Yes. It is made for gaming names, bios, comments, and profile text for Free Fire, BGMI, CODM, and similar communities.</p>
+          <p>Yes — it's built specifically for Free Fire, BGMI, CODM, and similar games. The Unicode characters render correctly in most gaming name fields.</p>
+        </details>
+        <details>
+          <summary>How do I copy a style?</summary>
+          <p>Tap any style card to copy it instantly, or press the Copy button on each card. The name is on your clipboard, ready to paste anywhere.</p>
         </details>
         <details>
           <summary>Does it work on mobile?</summary>
-          <p>Yes. It is responsive and works in the browser on phone and desktop.</p>
+          <p>Yes. The generator is fully responsive and works in any mobile browser — no app download needed.</p>
         </details>
         <details>
-          <summary>Is a server needed?</summary>
-          <p>No. The generator works locally in the browser.</p>
+          <summary>Is a server or login needed?</summary>
+          <p>No. Everything runs locally in your browser. No signup, no data collection, no server requests.</p>
         </details>
       </div>
     </section>
-  </main>
 
-  <footer class="footer">
-    <div class="footer-brand">
-      <span class="brand-mark small"><span></span><span></span><span></span><span></span></span>
-      <strong>FlexQR</strong>
-    </div>
-    <p>Stylish name generator built for quick, copy-ready text styles.</p>
-  </footer>
+    <footer class="footer">
+      <div class="footer-brand">
+        <span class="brand-mark"><span></span><span></span><span></span><span></span></span>
+        FlexQR
+      </div>
+      <p>Free stylish name generator for gamers and creators.</p>
+    </footer>
 
-  <script src="fonts.js"></script>
+  </div>
+
+  <!-- FONTS.JS INLINED -->
   <script>
-    const $ = (sel, el=document) => el.querySelector(sel);
+  function mapByArray(t,u,l,d){const U='ABCDEFGHIJKLMNOPQRSTUVWXYZ',L='abcdefghijklmnopqrstuvwxyz',D='0123456789',m={};if(u)U.split('').forEach((c,i)=>m[c]=u[i]||c);if(l)L.split('').forEach((c,i)=>m[c]=l[i]||c);if(d)D.split('').forEach((c,i)=>m[c]=d[i]||c);return String(t).split('').map(ch=>m[ch]??ch).join('');}
+  function upperLower(u,l,d='0123456789'){return t=>mapByArray(t,u,l,d);}
+  function spaced(t,g=' '){return String(t).split('').join(g);}
+  function comb(t,m='\u0336'){return String(t).split('').map(c=>c===' '?' ':c+m).join('');}
+  function mirror(t){const m={a:'ɒ',b:'d',c:'ɔ',d:'b',e:'ɘ',f:'ꟻ',g:'ƃ',h:'ʜ',i:'i',j:'ʝ',k:'ʞ',l:'l',m:'ɯ',n:'u',o:'o',p:'q',q:'p',r:'ɿ',s:'s',t:'ƚ',u:'n',v:'v',w:'w',x:'x',y:'ʎ',z:'z',A:'∀',B:'ᗺ',C:'Ɔ',D:'ᗡ',E:'Ǝ',F:'Ⅎ',G:'⅁',H:'H',I:'I',J:'ſ',K:'⋊',L:'˥',M:'W',N:'N',O:'O',P:'Ԁ',Q:'Ό',R:'ᴚ',S:'S',T:'┴',U:'∩',V:'Λ',W:'M',X:'X',Y:'⅄',Z:'Z',1:'Ɩ',2:'ᄅ',3:'Ɛ',4:'ㄣ',5:'ϛ',6:'9',7:'ㄥ',8:'8',9:'6',0:'0'};return String(t).split('').reverse().map(c=>m[c]??c).join('');}
+  function upsideDown(t){const m={a:'ɐ',b:'q',c:'ɔ',d:'p',e:'ǝ',f:'ɟ',g:'ƃ',h:'ɥ',i:'ᴉ',j:'ɾ',k:'ʞ',l:'l',m:'ɯ',n:'u',o:'o',p:'d',q:'b',r:'ɹ',s:'s',t:'ʇ',u:'n',v:'ʌ',w:'ʍ',x:'x',y:'ʎ',z:'z',A:'∀',B:'𐐒',C:'Ɔ',D:'◖',E:'Ǝ',F:'Ⅎ',G:'פ',H:'H',I:'I',J:'ſ',K:'⋊',L:'˥',M:'W',N:'N',O:'O',P:'Ԁ',Q:'Ό',R:'ᴚ',S:'S',T:'┴',U:'∩',V:'Λ',W:'M',X:'X',Y:'⅄',Z:'Z',1:'Ɩ',2:'ᄅ',3:'Ɛ',4:'ㄣ',5:'ϛ',6:'9',7:'ㄥ',8:'8',9:'6',0:'0'};return String(t).split('').reverse().map(c=>m[c]??c).join('');}
+  function glitch(t){const mk=['\u0300','\u0301','\u0302','\u0303','\u0304','\u0307','\u0323','\u0334','\u0336'];let o='';for(const c of String(t)){o+=c;if(c!==' '&&Math.random()<0.55)o+=mk[(Math.random()*mk.length)|0]+mk[(Math.random()*mk.length)|0];}return o;}
+  function zalgo(t){const z=['\u0301','\u0302','\u0303','\u0308','\u030a','\u030b','\u030c','\u0315','\u031b','\u0324','\u0325'];let o='';for(const c of String(t)){o+=c;if(c!==' '&&Math.random()<0.7)o+=z[(Math.random()*z.length)|0]+z[(Math.random()*z.length)|0];}return o;}
+  function wavy(t){return String(t).split('').map((c,i)=>i%2===0?c.toUpperCase():c.toLowerCase()).join('');}
+  function leet(t){return String(t).replace(/[aeiost]/gi,c=>({'a':'4','e':'3','i':'1','o':'0','s':'5','t':'7','A':'4','E':'3','I':'1','O':'0','S':'5','T':'7'}[c]||c));}
 
-    function toast(message){
-      let el = document.getElementById('toast');
-      if(!el){
-        el = document.createElement('div');
-        el.id = 'toast';
-        document.body.appendChild(el);
-      }
-      el.textContent = message;
-      el.style.cssText = 'position:fixed;right:18px;bottom:18px;z-index:9999;background:#111827;color:#fff;padding:12px 16px;border-radius:14px;box-shadow:0 16px 40px rgba(15,23,42,.22);font-weight:700;max-width:320px';
-      clearTimeout(toast._t);
-      toast._t = setTimeout(() => el.remove(), 2200);
+  const FW=upperLower('ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ','ａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚ','０１２３４５６７８９');
+  const MONO=upperLower(String.fromCodePoint(...Array.from({length:26},(_,i)=>0x1D670+i)),String.fromCodePoint(...Array.from({length:26},(_,i)=>0x1D68A+i)),String.fromCodePoint(...Array.from({length:10},(_,i)=>0x1D7F6+i)));
+  const SB=upperLower(String.fromCodePoint(...Array.from({length:26},(_,i)=>0x1D5D4+i)),String.fromCodePoint(...Array.from({length:26},(_,i)=>0x1D5EE+i)),String.fromCodePoint(...Array.from({length:10},(_,i)=>0x1D7EC+i)));
+  const SI=upperLower(String.fromCodePoint(...Array.from({length:26},(_,i)=>0x1D608+i)),String.fromCodePoint(...Array.from({length:26},(_,i)=>0x1D622+i)));
+  const SBI=upperLower(String.fromCodePoint(...Array.from({length:26},(_,i)=>0x1D63C+i)),String.fromCodePoint(...Array.from({length:26},(_,i)=>0x1D656+i)));
+  const SeB=upperLower(String.fromCodePoint(...Array.from({length:26},(_,i)=>0x1D400+i)),String.fromCodePoint(...Array.from({length:26},(_,i)=>0x1D41A+i)),String.fromCodePoint(...Array.from({length:10},(_,i)=>0x1D7CE+i)));
+  const SeI=upperLower(String.fromCodePoint(...Array.from({length:26},(_,i)=>0x1D434+i)),String.fromCodePoint(...Array.from({length:26},(_,i)=>0x1D44E+i)));
+  const SeBI=upperLower(String.fromCodePoint(...Array.from({length:26},(_,i)=>0x1D468+i)),String.fromCodePoint(...Array.from({length:26},(_,i)=>0x1D482+i)));
+  const DS=upperLower(['𝔸','𝔹','ℂ','𝔻','𝔼','𝔽','𝔾','ℍ','𝕀','𝕁','𝕂','𝕃','𝕄','ℕ','𝕆','ℙ','ℚ','ℝ','𝕊','𝕋','𝕌','𝕍','𝕎','𝕏','𝕐','ℤ'],['𝕒','𝕓','𝕔','𝕕','𝕖','𝕗','𝕘','𝕙','𝕚','𝕛','𝕜','𝕝','𝕞','𝕟','𝕠','𝕡','𝕢','𝕣','𝕤','𝕥','𝕦','𝕧','𝕨','𝕩','𝕪','𝕫'],['𝟘','𝟙','𝟚','𝟛','𝟜','𝟝','𝟞','𝟟','𝟠','𝟡']);
+  const SC=upperLower(['𝒜','𝐵','𝒞','𝒟','𝐸','𝐹','𝒢','ℋ','ℐ','𝒥','𝒦','ℒ','𝑀','𝒩','𝒪','𝒫','𝒬','ℛ','𝒮','𝒯','𝒰','𝒱','𝒲','𝒳','𝒴','𝒵'],['𝒶','𝒷','𝒸','𝒹','𝑒','𝒻','𝑔','𝒽','𝒾','𝒿','𝓀','𝓁','𝓂','𝓃','𝑜','𝓅','𝓆','𝓇','𝓈','𝓉','𝓊','𝓋','𝓌','𝓍','𝓎','𝓏']);
+  const SCB=upperLower(['𝓐','𝓑','𝓒','𝓓','𝓔','𝓕','𝓖','𝓗','𝓘','𝓙','𝓚','𝓛','𝓜','𝓝','𝓞','𝓟','𝓠','𝓡','𝓢','𝓣','𝓤','𝓥','𝓦','𝓧','𝓨','𝓩'],['𝓪','𝓫','𝓬','𝓭','𝓮','𝓯','𝓰','𝓱','𝓲','𝓳','𝓴','𝓵','𝓶','𝓷','𝓸','𝓹','𝓺','𝓻','𝓼','𝓽','𝓾','𝓿','𝔀','𝔁','𝔂','𝔃']);
+  const FR=upperLower(['𝔄','𝔅','ℭ','𝔇','𝔈','𝔉','𝔊','ℌ','ℑ','𝔍','𝔎','𝔏','𝔐','𝔑','𝔒','𝔓','𝔔','ℜ','𝔖','𝔗','𝔘','𝔙','𝔚','𝔛','𝔜','ℨ'],['𝔞','𝔟','𝔠','𝔡','𝔢','𝔣','𝔤','𝔥','𝔦','𝔧','𝔨','𝔩','𝔪','𝔫','𝔬','𝔭','𝔮','𝔯','𝔰','𝔱','𝔲','𝔳','𝔴','𝔵','𝔶','𝔷']);
+  const FRB=upperLower(['𝕬','𝕭','𝕮','𝕯','𝕰','𝕱','𝕲','𝕳','𝕴','𝕵','𝕶','𝕷','𝕸','𝕹','𝕺','𝕻','𝕼','𝕽','𝕾','𝕿','𝖀','𝖁','𝖂','𝖃','𝖄','𝖅'],['𝖆','𝖇','𝖈','𝖉','𝖊','𝖋','𝖌','𝖍','𝖎','𝖏','𝖐','𝖑','𝖒','𝖓','𝖔','𝖕','𝖖','𝖗','𝖘','𝖙','𝖚','𝖛','𝖜','𝖝','𝖞','𝖟']);
+  const SMCP=t=>String(t).replace(/[a-zA-Z]/g,c=>{const m={a:'ᴀ',b:'ʙ',c:'ᴄ',d:'ᴅ',e:'ᴇ',f:'ꜰ',g:'ɢ',h:'ʜ',i:'ɪ',j:'ᴊ',k:'ᴋ',l:'ʟ',m:'ᴍ',n:'ɴ',o:'ᴏ',p:'ᴘ',q:'ǫ',r:'ʀ',s:'ꜱ',t:'ᴛ',u:'ᴜ',v:'ᴠ',w:'ᴡ',x:'x',y:'ʏ',z:'ᴢ'};return m[c.toLowerCase()]||c;});
+  const CIR=upperLower(['Ⓐ','Ⓑ','Ⓒ','Ⓓ','Ⓔ','Ⓕ','Ⓖ','Ⓗ','Ⓘ','Ⓙ','Ⓚ','Ⓛ','Ⓜ','Ⓝ','Ⓞ','Ⓟ','Ⓠ','Ⓡ','Ⓢ','Ⓣ','Ⓤ','Ⓥ','Ⓦ','Ⓧ','Ⓨ','Ⓩ'],['ⓐ','ⓑ','ⓒ','ⓓ','ⓔ','ⓕ','ⓖ','ⓗ','ⓘ','ⓙ','ⓚ','ⓛ','ⓜ','ⓝ','ⓞ','ⓟ','ⓠ','ⓡ','ⓢ','ⓣ','ⓤ','ⓥ','ⓦ','ⓧ','ⓨ','ⓩ'],['⓪','①','②','③','④','⑤','⑥','⑦','⑧','⑨']);
+  const SQ=upperLower(['🄰','🄱','🄲','🄳','🄴','🄵','🄶','🄷','🄸','🄹','🄺','🄻','🄼','🄽','🄾','🄿','🅀','🅁','🅂','🅃','🅄','🅅','🅆','🅇','🅈','🅉'],['🄰','🄱','🄲','🄳','🄴','🄵','🄶','🄷','🄸','🄹','🄺','🄻','🄼','🄽','🄾','🄿','🅀','🅁','🅂','🅃','🅄','🅅','🅆','🅇','🅈','🅉']);
+  const SUP=t=>String(t).replace(/[a-zA-Z0-9]/g,c=>({a:'ᵃ',b:'ᵇ',c:'ᶜ',d:'ᵈ',e:'ᵉ',f:'ᶠ',g:'ᵍ',h:'ʰ',i:'ⁱ',j:'ʲ',k:'ᵏ',l:'ˡ',m:'ᵐ',n:'ⁿ',o:'ᵒ',p:'ᵖ',q:'ᑫ',r:'ʳ',s:'ˢ',t:'ᵗ',u:'ᵘ',v:'ᵛ',w:'ʷ',x:'ˣ',y:'ʸ',z:'ᶻ',A:'ᴬ',B:'ᴮ',D:'ᴰ',E:'ᴱ',G:'ᴳ',H:'ᴴ',I:'ᴵ',J:'ᴶ',K:'ᴷ',L:'ᴸ',M:'ᴹ',N:'ᴺ',O:'ᴼ',P:'ᴾ',R:'ᴿ',T:'ᵀ',U:'ᵁ',V:'ⱽ',W:'ᵂ',1:'¹',2:'²',3:'³',4:'⁴',5:'⁵',6:'⁶',7:'⁷',8:'⁸',9:'⁹',0:'⁰'}[c]||c));
+  const SUB=t=>String(t).replace(/[a-z0-9]/gi,c=>({a:'ₐ',e:'ₑ',h:'ₕ',i:'ᵢ',j:'ⱼ',k:'ₖ',l:'ₗ',m:'ₘ',n:'ₙ',o:'ₒ',p:'ₚ',r:'ᵣ',s:'ₛ',t:'ₜ',u:'ᵤ',v:'ᵥ',x:'ₓ',1:'₁',2:'₂',3:'₃',4:'₄',5:'₅',6:'₆',7:'₇',8:'₈',9:'₉',0:'₀'}[c.toLowerCase()]||c));
+  const WIDE=t=>spaced(FW(t),' ');
+  const SPCD=t=>spaced(t,' ');
+  const UL=t=>comb(t,'\u0332');
+  const STR=t=>comb(t,'\u0336');
+  const DOT=t=>comb(t,'\u0323');
+  const RNG=t=>comb(t,'\u030a');
+  const DBL=t=>comb(t,'\u0333');
+  const BUB=upperLower(['🅰','🅱','🅲','🅳','🅴','🅵','🅶','🅷','🅸','🅹','🅺','🅻','🅼','🅽','🅾','🅿','🆀','🆁','🆂','🆃','🆄','🆅','🆆','🆇','🆈','🆉'],['🅐','🅑','🅒','🅓','🅔','🅕','🅖','🅗','🅘','🅙','🅚','🅛','🅜','🅝','🅞','🅟','🅠','🅡','🅢','🅣','🅤','🅥','🅦','🅧','🅨','🅩']);
+
+  const BASE=[
+    ['Plain','clean',t=>String(t)],
+    ['Fullwidth','wide',FW],
+    ['Bold Sans','modern',SB],
+    ['Italic Sans','modern',SI],
+    ['Bold Italic Sans','modern',SBI],
+    ['Serif Bold','elegant',SeB],
+    ['Serif Italic','elegant',SeI],
+    ['Serif Bold Italic','elegant',SeBI],
+    ['Monospace','tech',MONO],
+    ['Double Struck','fancy',DS],
+    ['Script','elegant',SC],
+    ['Script Bold','elegant',SCB],
+    ['Fraktur','dark',FR],
+    ['Fraktur Bold','dark',FRB],
+    ['Small Caps','clean',SMCP],
+    ['Circled','fun',CIR],
+    ['Squared','fun',SQ],
+    ['Superscript','tiny',SUP],
+    ['Subscript','tiny',SUB],
+    ['Wide','wide',WIDE],
+    ['Spaced','clean',SPCD],
+    ['Underline','clean',UL],
+    ['Strikethrough','clean',STR],
+    ['Dotted','clean',DOT],
+    ['Ringed','clean',RNG],
+    ['Double Underline','clean',DBL],
+    ['Bubble','gaming',BUB],
+    ['Glitch','viral',glitch],
+    ['Mirror','viral',mirror],
+    ['Upside Down','viral',upsideDown],
+    ['Wavy Case','viral',wavy],
+    ['Zalgo Dark','dark',zalgo],
+    ['Leet Speak','gaming',leet],
+  ];
+
+  const WRAP=[
+    ['Royal','gaming',t=>`꧁༒☬ ${t} ☬༒꧂`],
+    ['Gamer','gaming',t=>`『 ${t} 』`],
+    ['Neon','modern',t=>`✦ ${t} ✦`],
+    ['Crown','royal',t=>`♛ ${t} ♛`],
+    ['Fire','viral',t=>`🔥 ${t} 🔥`],
+    ['Ice','viral',t=>`❄ ${t} ❄`],
+    ['Diamond','premium',t=>`◇ ${t} ◇`],
+    ['Premium','premium',t=>`✧ ${t} ✧`],
+    ['Shadow','dark',t=>`▐ ${t} ▌`],
+    ['Brackets','clean',t=>`【 ${t} 】`],
+    ['Arrow','clean',t=>`⟦ ${t} ⟧`],
+    ['Star','bright',t=>`★ ${t} ★`],
+    ['Tribal','gaming',t=>`𓆩 ${t} 𓆪`],
+    ['Mystic','gaming',t=>`⚡ ${t} ⚡`],
+    ['Badge','modern',t=>`❖ ${t} ❖`],
+    ['Slash','clean',t=>`// ${t} //`],
+    ['Wave','modern',t=>`〰 ${t} 〰`],
+    ['Dark Skull','dark',t=>`☠ ${t} ☠`],
+    ['Minimal','clean',t=>`• ${t} •`],
+    ['Gold','premium',t=>`𓂀 ${t} 𓂀`],
+    ['Spark','bright',t=>`✨ ${t} ✨`],
+    ['Aura','bright',t=>`✺ ${t} ✺`],
+    ['Line','clean',t=>`━━ ${t} ━━`],
+    ['Oblique','clean',t=>`❘ ${t} ❘`],
+    ['Galaxy','gaming',t=>`🌌 ${t} 🌌`],
+    ['Sword','gaming',t=>`⚔️ ${t} ⚔️`],
+    ['Shield','gaming',t=>`🛡 ${t} 🛡`],
+    ['Dragon','dark',t=>`🐉 ${t} 🐉`],
+    ['Crystal','premium',t=>`💎 ${t} 💎`],
+    ['Demon','dark',t=>`꧁꧂ ${t} ꧁꧂`],
+    ['Elite','modern',t=>`[${t}]`],
+    ['Blade','gaming',t=>`⌇${t}⌇`],
+    ['Infinity','modern',t=>`∞ ${t} ∞`],
+    ['Bolt','viral',t=>`⚡⚡${t}⚡⚡`],
+  ];
+
+  const FONT_STYLES=[];
+  let idx=1;
+  for(const[bn,bc,bf]of BASE){for(const[wn,wc,wf]of WRAP){FONT_STYLES.push({id:`s${String(idx).padStart(4,'0')}`,name:`${wn} ${bn}`,category:`${bc} • ${wc}`,transform(t){return wf(bf(t));}});idx++;}}
+  window.FONT_STYLES=FONT_STYLES;
+  window.FONT_STYLE_TOTAL=FONT_STYLES.length;
+  </script>
+
+  <!-- SCRIPT INLINED -->
+  <script>
+  let activeCat='all';
+
+  function showToast(msg){
+    let t=document.getElementById('toast');
+    if(!t){t=document.createElement('div');t.id='toast';document.body.appendChild(t);}
+    t.textContent=msg;
+    clearTimeout(showToast._t);
+    showToast._t=setTimeout(()=>t&&t.remove(),2000);
+  }
+
+  function copyText(val){
+    val=String(val||'');if(!val)return;
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(val).then(()=>showToast('Copied!')).catch(()=>fbCopy(val));
+    } else fbCopy(val);
+  }
+
+  function fbCopy(val){
+    const ta=document.createElement('textarea');
+    ta.value=val;document.body.appendChild(ta);ta.select();
+    document.execCommand('copy');ta.remove();showToast('Copied!');
+  }
+
+  function esc(s){return String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');}
+
+  function renderStyles(){
+    const name=(document.getElementById('name-input').value||'').trim();
+    const q=(document.getElementById('style-search').value||'').trim().toLowerCase();
+    const box=document.getElementById('style-results');
+    const countEl=document.getElementById('style-count');
+    const total=window.FONT_STYLE_TOTAL||0;
+
+    if(!window.FONT_STYLES||!window.FONT_STYLES.length){
+      box.innerHTML='<div class="results-empty"><div class="results-empty-icon">⚠️</div><div class="results-empty-title">Font styles failed to load</div></div>';
+      return;
+    }
+    if(!name){
+      box.innerHTML='<div class="results-empty"><div class="results-empty-icon">✦</div><div class="results-empty-title">Ready to generate</div><div class="results-empty-sub">Type your name and press Generate Styles</div></div>';
+      countEl.textContent=`${total}+ styles available`;
+      document.getElementById('copy-best').onclick=()=>showToast('Type a name first');
+      return;
     }
 
-    function copyText(text){
-      const value = String(text || '');
-      if(!value) return;
-      if(navigator.clipboard && navigator.clipboard.writeText){
-        navigator.clipboard.writeText(value).then(() => toast('Copied to clipboard!')).catch(() => fallbackCopy(value));
-      } else {
-        fallbackCopy(value);
-      }
+    let styles=window.FONT_STYLES;
+    if(activeCat!=='all') styles=styles.filter(s=>s.category.toLowerCase().includes(activeCat));
+    if(q) styles=styles.filter(s=>`${s.name} ${s.category}`.toLowerCase().includes(q));
+
+    countEl.textContent=styles.length>0?`${styles.length} styles • ${total}+ total`:`No styles matched`;
+    document.getElementById('copy-best').onclick=()=>copyText(styles[0]?styles[0].transform(name):name);
+
+    if(!styles.length){
+      box.innerHTML='<div class="results-empty"><div class="results-empty-icon">🔍</div><div class="results-empty-title">No styles found</div><div class="results-empty-sub">Try a different search or category</div></div>';
+      return;
     }
 
-    function fallbackCopy(value){
-      const ta = document.createElement('textarea');
-      ta.value = value;
-      document.body.appendChild(ta);
-      ta.select();
-      document.execCommand('copy');
-      ta.remove();
-      toast('Copied to clipboard!');
-    }
+    const frag=document.createDocumentFragment();
+    styles.forEach(style=>{
+      const value=style.transform(name);
+      const card=document.createElement('div');
+      card.className='style-card';
+      card.innerHTML=`<div class="style-meta"><div class="style-name">${esc(style.name)}</div><button class="style-copy-btn" type="button">Copy</button></div><div class="style-text">${esc(value)}</div><span class="style-cat">${esc(style.category)}</span>`;
+      card.addEventListener('click',()=>copyText(value));
+      card.querySelector('.style-copy-btn').addEventListener('click',e=>{e.stopPropagation();copyText(value);});
+      frag.appendChild(card);
+    });
+    box.innerHTML='';box.appendChild(frag);
+  }
 
-    function renderStyles(){
-      const name = ($('#name-input').value || '').trim();
-      const search = ($('#style-search').value || '').trim().toLowerCase();
-      const box = $('#style-results');
-      const total = window.FONT_STYLE_TOTAL || (window.FONT_STYLES ? window.FONT_STYLES.length : 0);
-
-      if(!window.FONT_STYLES || !window.FONT_STYLES.length){
-        box.innerHTML = '<div class="style-card" style="grid-column:1/-1;text-align:center;padding:28px"><div class="style-text">Styles file is missing.</div><div class="style-small">Upload fonts.js to enable the generator.</div></div>';
-        $('#style-count').textContent = '0 styles available';
-        return;
-      }
-
-      if(!name){
-        box.innerHTML = '<div class="style-card" style="grid-column:1/-1;text-align:center;padding:28px"><div class="style-text">Type your name and press Generate Styles</div><div class="style-small">You will see 500+ stylish versions here.</div></div>';
-        $('#style-count').textContent = `${total}+ styles available`;
-        $('#copy-best').onclick = () => toast('Type a name first');
-        return;
-      }
-
-      const styles = window.FONT_STYLES.filter(s => !search || `${s.name} ${s.category}`.toLowerCase().includes(search));
-      $('#style-count').textContent = `${styles.length} styles shown • ${total}+ total`;
-      $('#copy-best').onclick = () => copyText(styles[0] ? styles[0].transform(name) : name);
-
-      const fragment = document.createDocumentFragment();
-
-      styles.forEach(style => {
-        const value = style.transform(name);
-        const card = document.createElement('div');
-        card.className = 'style-card';
-
-        const meta = document.createElement('div');
-        meta.className = 'style-meta';
-
-        const title = document.createElement('div');
-        title.className = 'style-name';
-        title.textContent = style.name;
-
-        const btn = document.createElement('button');
-        btn.className = 'style-copy';
-        btn.type = 'button';
-        btn.textContent = 'Copy';
-
-        meta.append(title, btn);
-
-        const styledText = document.createElement('div');
-        styledText.className = 'style-text';
-        styledText.textContent = value;
-
-        const small = document.createElement('div');
-        small.className = 'style-small';
-        small.textContent = style.category;
-
-        card.append(meta, styledText, small);
-        card.addEventListener('click', () => copyText(value));
-        btn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          copyText(value);
-        });
-
-        fragment.appendChild(card);
+  document.addEventListener('DOMContentLoaded',()=>{
+    document.getElementById('name-generate').addEventListener('click',renderStyles);
+    document.getElementById('name-input').addEventListener('keydown',e=>{if(e.key==='Enter')renderStyles();});
+    document.getElementById('style-search').addEventListener('input',renderStyles);
+    document.querySelectorAll('.filter-chip').forEach(chip=>{
+      chip.addEventListener('click',()=>{
+        document.querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('active'));
+        chip.classList.add('active');
+        activeCat=chip.dataset.cat;
+        renderStyles();
       });
+    });
+    renderStyles();
+  });
+  </script>
 
-      box.innerHTML = '';
-      box.appendChild(fragment);
-    }
-
-    document.addEve          <div class="qr-stage">
-            <div id="qr-output" class="qr-output"></div>
-            <div id="qr-empty" class="qr-empty"><div><div class="qr-icon">▣</div><p>Type something and press Generate</p></div></div>
-          </div>
-          <div class="action-row"><button id="download-png" class="btn btn-secondary full" disabled>Download PNG</button><button id="download-svg" class="btn btn-secondary full" disabled>Download SVG</button></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-shell" id="style-section">
-      <div class="section-heading">
-        <p class="eyebrow">STYLISH NAME GENERATOR</p>
-        <h2>500+ Stylish Fonts for Gaming Names</h2>
-        <p>Type a name once and explore hundreds of stylish versions for Free Fire, BGMI, CODM, Instagram bios and social posts.</p>
-      </div>
-      <div class="panel">
-        <div class="panel-top"><div><h3>Stylish Name Generator</h3><p>Search, copy and use any style instantly.</p></div></div>
-        <div class="name-controls">
-          <input id="name-input" class="input" type="text" placeholder="Type your name here..." />
-          <input id="style-search" class="input" type="text" placeholder="Search styles (royal, gaming, neon...)" />
-          <button id="name-generate" class="btn btn-primary">Generate Styles</button>
-          <button id="copy-best" class="btn btn-secondary">Copy Best Style</button>
-        </div>
-        <div class="stats-row"><span id="style-count">500+ styles available</span><span>Click any style to copy</span></div>
-        <div id="style-results" class="style-results"></div>
-      </div>
-    </section>
-
-    <section class="section-shell seo-copy">
-      <div class="section-heading"><p class="eyebrow">SEO CONTENT</p><h2>Why people use FlexQR</h2></div>
-      <div class="copy-grid">
-        <article><h3>Fast QR code generator</h3><p>FlexQR helps users create free QR codes quickly for websites, WiFi, WhatsApp and payments with a simple browser-only workflow.</p></article>
-        <article><h3>Stylish name generator</h3><p>The stylish generator is built for gaming names, bios, comments and profile text. It includes 500+ combinations of Unicode fonts and decorations.</p></article>
-        <article><h3>Private and simple</h3><p>No signup, no backend, no watermark. Everything runs locally in the browser, making the site lightweight and easy to use.</p></article>
-      </div>
-    </section>
-
-    <section class="section-shell" id="faq">
-      <div class="section-heading"><p class="eyebrow">FAQ</p><h2>Common questions</h2></div>
-      <div class="faq-list">
-        <details><summary>Is FlexQR free?</summary><p>Yes. FlexQR is free to use and works directly in your browser.</p></details>
-        <details><summary>How many fonts are available?</summary><p>The stylish name generator includes 500+ style combinations.</p></details>
-        <details><summary>Can I use it for gaming names?</summary><p>Yes. It is designed for Free Fire, BGMI, CODM and similar gaming names.</p></details>
-        <details><summary>Do I need a server?</summary><p>No. Everything is client-side.</p></details>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="footer-brand"><span class="brand-mark small"><span></span><span></span><span></span><span></span></span><strong>FlexQR</strong></div>
-    <p>Free QR generator and stylish name generator for modern creators.</p>
-  </footer>
-
-  <script src="fonts.js"></script>
-  <script src="script.js"></script>
 </body>
 </html>
